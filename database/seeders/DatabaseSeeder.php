@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             BookSeeder::class,
             WishlistSeeder::class,
             LoanSeeder::class,
+            FineSeeder::class,
         ]);
     }
 }

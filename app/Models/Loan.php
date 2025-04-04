@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Loan extends Model
 {
@@ -34,5 +35,10 @@ class Loan extends Model
     public function admin(): BelongsTo
     {
         return $this->belongsTo(Admin::class);
+    }
+
+    public function fine(): HasOne
+    {
+        return $this->hasOne(Fine::class);
     }
 }
