@@ -2,8 +2,15 @@
     <h1 class="text-2xl font-medium">Book Management</h1>
     <div class="flex justify-between items-center mt-5">
         <form action="{{ route('admin.book-manage') }}" method="get" class="max-w-xl">
-            <flux:input icon="magnifying-glass" placeholder="Search books..." name="search"
-                value="{{ request('search') }}" />
+            <flux:input.group>
+                <flux:input icon="magnifying-glass" placeholder="Search books..." name="search"
+                    value="{{ request('search') }}" />
+                <flux:select class="max-w-fit" name="order">
+                    <flux:select.option value="title" selected>Title</flux:select.option>
+                    <flux:select.option value="author">Author</flux:select.option>
+                    <flux:select.option value="isbn">ISBN</flux:select.option>
+                </flux:select>
+            </flux:input.group>
         </form>
         <div class="flex gap-3">
             <flux:dropdown>
@@ -40,6 +47,7 @@
         <table class="min-w-full divide-y-2 divide-gray-200 dark:divide-zinc-700">
             <thead class="ltr:text-left rtl:text-right">
                 <tr class="*:font-medium *:text-gray-900 dark:*:text-white">
+                    <th class="px-3 py-2 whitespace-nowrap">#</th>
                     <th class="px-3 py-2 whitespace-nowrap">Title</th>
                     <th class="px-3 py-2 whitespace-nowrap">Author</th>
                     <th class="px-3 py-2 whitespace-nowrap">ISBN</th>
@@ -53,7 +61,7 @@
             <tbody class="divide-y divide-gray-200 dark:divide-zinc-700">
                 @if ($books->count())
                     @foreach ($books as $book)
-                    <x-admin.book-list :book="$book" />
+                        <x-admin.book-list :book="$book" :iter="$loop->iteration" />
                     @endforeach
                 @else
                     <tr>

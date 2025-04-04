@@ -1,4 +1,5 @@
 <tr class="*:text-gray-900 *:first:font-medium dark:*:text-white">
+    <td class="px-3 py-2 whitespace-nowrap">{{ $iter }}</td>
     <td class="px-3 py-2 whitespace-nowrap flex items-center gap-2">
         <img src="https://placehold.co/400x600" alt="cover book" class="max-w-10">
         {{ $book->title }}

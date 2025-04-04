@@ -20,9 +20,9 @@ class AdminController extends Controller
     public function bookManage()
     {
         if (request('search')) {
-            $books = Book::where('title', 'like', '%' . request('search') . '%')->get();
+            $books = Book::with('category')->where(request('order'), 'like', '%' . request('search') . '%')->get();
         } else {
-            $books = Book::all();
+            $books = Book::with('category')->orderBy('title')->get();
         }
 
         return view('admin.book-manage', ['books' => $books]);
