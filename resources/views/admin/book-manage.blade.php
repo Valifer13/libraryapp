@@ -51,9 +51,17 @@
             </thead>
 
             <tbody class="divide-y divide-gray-200 dark:divide-zinc-700">
-                @foreach ($books as $book)
-                <x-admin.book-list :book="$book" />
-                @endforeach
+                @if ($books->count())
+                    @foreach ($books as $book)
+                    <x-admin.book-list :book="$book" />
+                    @endforeach
+                @else
+                    <tr>
+                        <td colspan="7">
+                            <h1 class="text-xl font-medium text-center my-5">No book found!</h1>
+                        </td>
+                    </tr>
+                @endif
             </tbody>
         </table>
     </div>
