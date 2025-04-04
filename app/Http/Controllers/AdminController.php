@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -9,5 +10,16 @@ class AdminController extends Controller
     public function index()
     {
         return view('admin.dashboard');
+    }
+
+    public function settings()
+    {
+        return view('admin.settings');
+    }
+
+    public function bookManage()
+    {
+        $books = Book::all();
+        return view('admin.book-manage', compact('books'));
     }
 }

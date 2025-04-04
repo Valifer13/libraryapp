@@ -1,4 +1,11 @@
-<x-admin.layouts.app :title="__('Admin Login')">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    @include('partials.head')
+</head>
+
+<body>
     <section class="w-full h-screen grid place-content-center">
         <form action="{{ route('admin.login') }}" method="post" class="grid gap-3 w-sm">
             @csrf
@@ -8,4 +15,6 @@
             <flux:button type="submit">Submit</flux:button>
         </form>
     </section>
-</x-admin.layouts.app>
+</body>
+
+</html>

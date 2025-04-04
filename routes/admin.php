@@ -10,6 +10,8 @@ Route::prefix('admin')->group(function () {
 
     Route::middleware('auth:admin')->group(function () {
         Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+        Route::get('/books', [AdminController::class, 'bookManage'])->name('admin.book-manage');
         Route::post('/auth/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+        Route::get('/settings', [AdminController::class, 'settings'])->name('admin.settings');
     });
 });
