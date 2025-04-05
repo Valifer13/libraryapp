@@ -1,4 +1,4 @@
-<x-admin.layouts.app :title="__('Admin Dashboard')">
+<x-admin.layouts.app :title="__('Book Management')">
     <h1 class="text-2xl font-medium">Book Management</h1>
     <div class="flex justify-between items-center mt-5">
         <form action="/admin/books" method="get" class="max-w-xl">
@@ -18,7 +18,7 @@
 
                 <flux:menu>
                     <div class="block lg:hidden">
-                        <flux:menu.item icon="plus">New Book</flux:menu.item>
+                        <flux:menu.item icon="plus" href="/admin/books/create">New Book</flux:menu.item>
 
                         <flux:menu.separator />
                     </div>
@@ -39,7 +39,7 @@
                 </flux:menu>
             </flux:dropdown>
             <div class="hidden lg:block">
-                <flux:button icon="plus" variant="primary">New Book</flux:button>
+                <flux:button icon="plus" variant="primary" href="/admin/books/create">New Book</flux:button>
             </div>
         </div>
     </div>

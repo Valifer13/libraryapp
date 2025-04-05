@@ -16,15 +16,4 @@ class AdminController extends Controller
     {
         return view('admin.settings');
     }
-
-    public function bookManage()
-    {
-        if (request('search')) {
-            $books = Book::with('category')->where(request('order'), 'like', '%' . request('search') . '%')->paginate(10);
-        } else {
-            $books = Book::with('category')->orderBy('title')->paginate(10);
-        }
-
-        return view('admin.book-manage', ['books' => $books]);
-    }
 }
