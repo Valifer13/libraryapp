@@ -22,6 +22,21 @@ class Loan extends Model
         'status',
     ];
 
+    public function scopeReturned($query)
+    {
+        return $query->where('status', 'returned');
+    }
+
+    public function scopeNotReturned($query)
+    {
+        return $query->where('status', '!=', 'returned');
+    }
+
+    public function scopeOverdue($query)
+    {
+        return $query->where('status', '!=', 'overdue');
+    }
+
     public function book(): BelongsTo
     {
         return $this->belongsTo(Book::class);

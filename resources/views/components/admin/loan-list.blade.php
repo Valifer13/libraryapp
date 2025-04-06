@@ -5,7 +5,6 @@
     <td class="px-3 py-2 whitespace-nowrap">{{ $loan->admin->name }}</td>
     <td class="px-3 py-2 whitespace-nowrap">{{ $loan->borrow_date }}</td>
     <td class="px-3 py-2 whitespace-nowrap">{{ $loan->due_date }}</td>
-    <td class="px-3 py-2 whitespace-nowrap">{{ $loan->return_date ? $loan->return_date : 'Null' }}</td>
     <td class="px-3 py-2 whitespace-nowrap">
         @if($loan->status == 'overdue')
             <flux:badge variant="pill" color="red" icon="exclamation-circle">{{ $loan->status }}</flux:badge>

@@ -51,7 +51,9 @@ class LoanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $loan = Loan::find($id);
+
+        return view('admin.loans.edit', compact('loan'));
     }
 
     /**
@@ -68,5 +70,26 @@ class LoanController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function borrowing()
+    {
+        $loans = Loan::notReturned()->with(['book', 'user', 'admin'])->paginate(30);
+
+        return view('admin.loans.borrowing', ['loans' => $loans]);
+    }
+
+    public function returning()
+    {
+        $loans = Loan::with(['book', 'user', 'admin'])->paginate(30);
+        
+        return view('admin.loans.return', ['loans' => $loans]);
+    }
+    
+    public function history()
+    {
+        $loans = Loan::returned()->with(['book', 'user', 'admin'])->paginate(30);
+
+        return view('admin.loans.history', ['loans' => $loans]);
     }
 }

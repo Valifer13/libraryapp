@@ -17,5 +17,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
 
     Route::resource('/books', BookController::class)->middleware('auth:admin');
+
+    Route::prefix('/loans')->middleware('auth:admin')->group(function () {
+        Route::get('/borrowing', [LoanController::class, 'borrowing'])->name('loans.borrowing');
+        Route::get('/return', [LoanController::class, 'returning'])->name('loans.return');
+        Route::get('/history', [LoanController::class, 'history'])->name('loans.history');
+    });
     Route::resource('/loans', LoanController::class)->middleware('auth:admin');
 });
