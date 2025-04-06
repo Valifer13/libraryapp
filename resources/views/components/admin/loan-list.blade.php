@@ -5,6 +5,18 @@
     <td class="px-3 py-2 whitespace-nowrap">{{ $loan->admin->name }}</td>
     <td class="px-3 py-2 whitespace-nowrap">{{ $loan->borrow_date }}</td>
     <td class="px-3 py-2 whitespace-nowrap">{{ $loan->due_date }}</td>
+    @if(request()->is('admin/loans/history'))
+    <td class="px-3 py-2 whitespace-nowrap">{{ $loan->return_date }}</td>
+    <td class="px-3 py-2 whitespace-nowrap">
+        @if($loan->status == 'overdue')
+            <flux:badge variant="pill" color="red" icon="exclamation-circle">{{ $loan->status }}</flux:badge>
+        @elseif($loan->status == 'returned')
+            <flux:badge variant="pill" color="green" icon="check-circle">{{ $loan->status }}</flux:badge>
+        @else
+            <flux:badge variant="pill" color="blue" icon="clock">{{ $loan->status }}</flux:badge>
+        @endif
+    </td>
+    @else
     <td class="px-3 py-2 whitespace-nowrap">
         @if($loan->status == 'overdue')
             <flux:badge variant="pill" color="red" icon="exclamation-circle">{{ $loan->status }}</flux:badge>
@@ -25,4 +37,5 @@
             </form>
         </flux:button.group>
     </td>
+    @endif
 </tr>

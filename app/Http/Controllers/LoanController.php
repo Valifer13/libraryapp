@@ -79,11 +79,18 @@ class LoanController extends Controller
         return view('admin.loans.borrowing', ['loans' => $loans]);
     }
 
+    public function overdue()
+    {
+        $loans = Loan::overdue()->with(['book', 'user', 'admin'])->paginate(30);
+
+        return view('admin.loans.overdue', ['loans' => $loans]);
+    }
+
     public function returning()
     {
         $loans = Loan::with(['book', 'user', 'admin'])->paginate(30);
         
-        return view('admin.loans.return', ['loans' => $loans]);
+        return view('admin.loans.returning', ['loans' => $loans]);
     }
     
     public function history()

@@ -20,7 +20,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::prefix('/loans')->middleware('auth:admin')->group(function () {
         Route::get('/borrowing', [LoanController::class, 'borrowing'])->name('loans.borrowing');
-        Route::get('/return', [LoanController::class, 'returning'])->name('loans.return');
+        Route::get('/overdue', [LoanController::class, 'overdue'])->name('loans.overdue');
+        Route::get('/returning', [LoanController::class, 'returning'])->name('loans.returning');
         Route::get('/history', [LoanController::class, 'history'])->name('loans.history');
     });
     Route::resource('/loans', LoanController::class)->middleware('auth:admin');

@@ -1,5 +1,5 @@
 <x-admin.layouts.loans :loans="$loans">
-    <div class="overflow-x-auto mt-3">
+    <div class="overflow-x-auto mt-5">
         <table class="min-w-full divide-y-2 divide-gray-200 dark:divide-zinc-700">
             <thead class="ltr:text-left rtl:text-right">
                 <tr class="*:font-medium *:text-gray-900 dark:*:text-white">
@@ -9,8 +9,8 @@
                     <th class="px-3 py-2 whitespace-nowrap">Admin</th>
                     <th class="px-3 py-2 whitespace-nowrap">Borrow</th>
                     <th class="px-3 py-2 whitespace-nowrap">Due</th>
+                    <th class="px-3 py-2 whitespace-nowrap">Return</th>
                     <th class="px-3 py-2 whitespace-nowrap">Status</th>
-                    <th class="px-3 py-2 whitespace-nowrap">Options</th>
                 </tr>
             </thead>
 

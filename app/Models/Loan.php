@@ -34,7 +34,7 @@ class Loan extends Model
 
     public function scopeOverdue($query)
     {
-        return $query->where('status', '!=', 'overdue');
+        return $query->where('status', 'overdue');
     }
 
     public function book(): BelongsTo
