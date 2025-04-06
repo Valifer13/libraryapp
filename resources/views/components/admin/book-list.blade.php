@@ -11,8 +11,12 @@
     <td class="px-3 py-2 whitespace-nowrap">{{ $book->category->name }}</td>
     <td class="px-3 py-2 whitespace-nowrap">
         <flux:button.group>
-            <flux:button icon="pencil-square" class="bg-yellow-500! hover:bg-yellow-400!"></flux:button>
-            <flux:button icon="trash" variant="danger"></flux:button>
+            <flux:button icon="pencil-square" class="bg-yellow-500! hover:bg-yellow-400!" href="/admin/books/{{ $book->id }}/edit"></flux:button>
+            <form action="/admin/books/{{ $book->id }}" method="post">
+                @csrf
+                @method('delete')
+                <flux:button icon="trash" variant="danger" type="submit"></flux:button>
+            </form>
         </flux:button.group>
     </td>
 </tr>

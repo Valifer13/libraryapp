@@ -62,7 +62,10 @@ class BookController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $book = Book::find($id);
+        $categories = Category::all();
+
+        return view('admin.books.edit', compact('book', 'categories'));
     }
 
     /**
@@ -70,7 +73,20 @@ class BookController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $book = Book::find($id);
+
+        $book->title = $request['title'];
+        $book->author = $request['author'];
+        $book->isbn = $request['isbn'];
+        $book->cover = $request['cover'];
+        $book->published_year = $request['published_year'];
+        $book->description = $request['description'];
+        $book->stock = $request['stock'];
+        $book->category_id = $request['category'];
+
+        $book->save();
+
+        return redirect()->route('admin.books.index');
     }
 
     /**
@@ -78,6 +94,7 @@ class BookController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Book::destroy($id);
+        return redirect()->route('admin.books.index');
     }
 }

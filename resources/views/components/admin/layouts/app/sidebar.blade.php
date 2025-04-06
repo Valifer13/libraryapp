@@ -15,6 +15,7 @@
                 <flux:navlist.group :heading="__('Platform')" class="grid">
                     <flux:navlist.item icon="home" :href="'/admin/dashboard'" :current="request()->is('admin/dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
                     <flux:navlist.item icon="book-open" :href="'/admin/books'" :current="request()->is('admin/books*')" wire:navigate>{{ __('Book Management') }}</flux:navlist.item>
+                    <flux:navlist.item icon="clipboard-document-list" :href="'/admin/loans'" :current="request()->is('admin/loans*')" wire:navigate>{{ __('Loan Management') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
