@@ -12,6 +12,7 @@
     <td class="px-3 py-2 whitespace-nowrap">
         <flux:button.group>
             <flux:button icon="pencil-square" class="bg-yellow-500! hover:bg-yellow-400!" href="/admin/books/{{ $book->id }}/edit"></flux:button>
+            <flux:button icon="document-magnifying-glass" class="bg-blue-500! hover:bg-blue-400!" href="/admin/books/{{ $book->id }}"></flux:button>
             <form action="/admin/books/{{ $book->id }}" method="post">
                 @csrf
                 @method('delete')

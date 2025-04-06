@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\LoanController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -16,4 +17,5 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
 
     Route::resource('/books', BookController::class)->middleware('auth:admin');
+    Route::resource('/loans', LoanController::class)->middleware('auth:admin');
 });
