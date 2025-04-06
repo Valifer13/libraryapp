@@ -15,7 +15,7 @@
             <form action="/admin/books/{{ $book->id }}" method="post">
                 @csrf
                 @method('delete')
-                <flux:button icon="trash" variant="danger" type="submit"></flux:button>
+                <flux:button icon="trash" variant="danger" type="submit" class="cursor-pointer"></flux:button>
             </form>
         </flux:button.group>
     </td>
