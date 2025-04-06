@@ -6,6 +6,7 @@ use App\Models\Admin;
 use App\Models\Book;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Loan>
@@ -28,7 +29,8 @@ class LoanFactory extends Factory
         } else if (now()->greaterThan($dueDate)) {
             $status = 'overdue';
         } else {
-            $status = 'borrowed';
+            // $status = Arr::random(['borrowed', 'returning']);
+            $status = fake()->randomElement(['borrowed', 'returning']);
         }
 
         return [

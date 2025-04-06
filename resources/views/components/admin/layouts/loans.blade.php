@@ -1,6 +1,6 @@
 <x-admin.layouts.app :title="__('Loan Management')">
     <h1 class="text-2xl font-medium">Loan Management</h1>
-    <form action="/admin/loans" method="get" class="max-w-xl mt-5">
+    <form action="/admin/loans" method="get" class="max-w-sm mt-5">
         <flux:input.group>
             <flux:input icon="magnifying-glass" placeholder="Search loans..." name="search"
                 value="{{ request('search') }}" />
@@ -14,9 +14,9 @@
     <div class="flex justify-between items-center mt-5">
         <div class="flex items-center gap-3 border-b-2 border-zinc-500">
             <a href="/admin/loans" class="{{ request()->is('admin/loans') ? 'text-white border-b-2 border-white' : 'text-zinc-500 hover:text-zinc-300' }} font-medium p-3">List</a>
-            <a href="/admin/loans/borrowing" class="{{ request()->is('admin/loans/borrowing') ? 'text-white border-b-2 border-white' : 'text-zinc-500 hover:text-zinc-300' }} font-medium p-3">Borrowing</a>
+            <a href="/admin/loans/borrowing" class="{{ request()->is('admin/loans/borrowing') ? 'text-white border-b-2 border-white' : 'text-zinc-500 hover:text-zinc-300' }} font-medium p-3">Borrowing <flux:badge size="sm" color="blue">{{ App\Models\Loan::notReturned()->count() }}</flux:badge></a>
             <a href="/admin/loans/overdue" class="{{ request()->is('admin/loans/overdue') ? 'text-white border-b-2 border-white' : 'text-zinc-500 hover:text-zinc-300' }} font-medium p-3">Overdue <flux:badge size="sm" color="red">{{ App\Models\Loan::overdue()->count() }}</flux:badge></a>
-            <a href="/admin/loans/returning" class="{{ request()->is('admin/loans/returning') ? 'text-white border-b-2 border-white' : 'text-zinc-500 hover:text-zinc-300' }} font-medium p-3">Returning <flux:badge size="sm" color="yellow">{{ App\Models\Loan::all()->count() }}</flux:badge></a>
+            <a href="/admin/loans/returning" class="{{ request()->is('admin/loans/returning') ? 'text-white border-b-2 border-white' : 'text-zinc-500 hover:text-zinc-300' }} font-medium p-3">Returning <flux:badge size="sm" color="yellow">{{ App\Models\Loan::returning()->count() }}</flux:badge></a>
             <a href="/admin/loans/history" class="{{ request()->is('admin/loans/history') ? 'text-white border-b-2 border-white' : 'text-zinc-500 hover:text-zinc-300' }} font-medium p-3">History</a>
         </div>
         <div class="flex gap-3">

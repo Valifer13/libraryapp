@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('borrow_date');
             $table->date('due_date');
             $table->date('return_date')->nullable()->default(null);
-            $table->enum('status', ['borrowed', 'returned', 'overdue'])->default('borrowed');
+            $table->enum('status', ['borrowed', 'returned', 'overdue', 'returning'])->default('borrowed');
             $table->timestamps();
         });
     }

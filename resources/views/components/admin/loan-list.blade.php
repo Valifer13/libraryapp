@@ -6,36 +6,45 @@
     <td class="px-3 py-2 whitespace-nowrap">{{ $loan->borrow_date }}</td>
     <td class="px-3 py-2 whitespace-nowrap">{{ $loan->due_date }}</td>
     @if(request()->is('admin/loans/history'))
-    <td class="px-3 py-2 whitespace-nowrap">{{ $loan->return_date }}</td>
-    <td class="px-3 py-2 whitespace-nowrap">
-        @if($loan->status == 'overdue')
-            <flux:badge variant="pill" color="red" icon="exclamation-circle">{{ $loan->status }}</flux:badge>
-        @elseif($loan->status == 'returned')
+        <td class="px-3 py-2 whitespace-nowrap">{{ $loan->return_date }}</td>
+        <td class="px-3 py-2 whitespace-nowrap">
             <flux:badge variant="pill" color="green" icon="check-circle">{{ $loan->status }}</flux:badge>
-        @else
-            <flux:badge variant="pill" color="blue" icon="clock">{{ $loan->status }}</flux:badge>
-        @endif
-    </td>
-    @else
-    <td class="px-3 py-2 whitespace-nowrap">
-        @if($loan->status == 'overdue')
-            <flux:badge variant="pill" color="red" icon="exclamation-circle">{{ $loan->status }}</flux:badge>
-        @elseif($loan->status == 'returned')
-            <flux:badge variant="pill" color="green" icon="check-circle">{{ $loan->status }}</flux:badge>
-        @else
-            <flux:badge variant="pill" color="blue" icon="clock">{{ $loan->status }}</flux:badge>
-        @endif
-    </td>
-    <td class="px-3 py-2 whitespace-nowrap">
-        <flux:button.group>
-            <flux:button icon="pencil-square" class="bg-yellow-500! hover:bg-yellow-400!" href="/admin/loans/{{ $loan->id }}/edit"></flux:button>
-            <flux:button icon="document-magnifying-glass" class="bg-blue-500! hover:bg-blue-400!" href="/admin/loans/{{ $loan->id }}"></flux:button>
-            <form action="/admin/loans/{{ $loan->id }}" method="post">
+        </td>
+    @elseif(request()->is('admin/loans/returning'))
+        <td class="px-3 py-2 whitespace-nowrap">
+            <flux:badge variant="pill" color="yellow" icon="arrow-uturn-left">{{ $loan->status }}</flux:badge>
+        </td>
+        <td>
+            <form action="/admin/loans/returning/{{ $loan->id }}" method="post">
                 @csrf
-                @method('delete')
-                <flux:button icon="trash" variant="danger" type="submit" class="cursor-pointer"></flux:button>
+                @method('put')
+                <flux:button icon="check" class="bg-green-600! hover:bg-green-500!" type="submit">Accept</flux:button>
             </form>
-        </flux:button.group>
-    </td>
+        </td>
+    @else
+        <td class="px-3 py-2 whitespace-nowrap">
+            @if($loan->status == 'overdue')
+                <flux:badge variant="pill" color="red" icon="exclamation-circle">{{ $loan->status }}</flux:badge>
+            @elseif($loan->status == 'returned')
+                <flux:badge variant="pill" color="green" icon="check-circle">{{ $loan->status }}</flux:badge>
+            @elseif($loan->status == 'returning')
+                <flux:badge variant="pill" color="yellow" icon="arrow-uturn-left">{{ $loan->status }}</flux:badge>
+            @else
+                <flux:badge variant="pill" color="blue" icon="clock">{{ $loan->status }}</flux:badge>
+            @endif
+        </td>
+        <td class="px-3 py-2 whitespace-nowrap">
+            <flux:button.group>
+                <flux:button icon="pencil-square" class="bg-yellow-500! hover:bg-yellow-400!"
+                    href="/admin/loans/{{ $loan->id }}/edit"></flux:button>
+                <flux:button icon="document-magnifying-glass" class="bg-blue-500! hover:bg-blue-400!"
+                    href="/admin/loans/{{ $loan->id }}"></flux:button>
+                <form action="/admin/loans/{{ $loan->id }}" method="post">
+                    @csrf
+                    @method('delete')
+                    <flux:button icon="trash" variant="danger" type="submit" class="cursor-pointer"></flux:button>
+                </form>
+            </flux:button.group>
+        </td>
     @endif
 </tr>
