@@ -19,7 +19,7 @@ return new class extends Migration {
             $table->string('published_year');
             $table->text('description');
             $table->integer('stock');
-            $table->foreignId('category_id')->constrained('categories')->nullOnDelete();
+            $table->foreignId('category_id')->nullable()->constrained('categories')->nullOnDelete();
             $table->timestamps();
         });
     }

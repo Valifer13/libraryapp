@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('loans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('book_id')->constrained('books')->nullOnDelete();
+            $table->foreignId('book_id')->nullable()->constrained('books')->nullOnDelete();
             $table->foreignId('user_id')->constrained('users')->restrictOnDelete();
-            $table->foreignId('admin_id')->constrained('admins')->nullOnDelete();
+            $table->foreignId('admin_id')->nullable()->constrained('admins')->nullOnDelete();
             $table->date('borrow_date');
             $table->date('due_date');
             $table->date('return_date')->nullable()->default(null);
