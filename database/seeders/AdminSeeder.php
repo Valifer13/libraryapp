@@ -20,6 +20,6 @@ class AdminSeeder extends Seeder
             'password' => Hash::make('password'),
         ]);
 
-        Admin::factory(3)->create();
+        // Admin::factory(3)->create();
     }
 }

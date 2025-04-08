@@ -1,5 +1,5 @@
 <x-admin.layouts.app :title="__('Add New Book')">
-    <form action="/admin/books" method="post">
+    <form action="/admin/books" method="post" enctype="multipart/form-data">
         @csrf
         <flux:fieldset>
             <flux:legend>Add New Book</flux:legend>
@@ -20,7 +20,7 @@
                 </div>
 
                 <flux:textarea placeholder="Book description..." label="Description" class="max-w-md" name="description" />
-                <flux:input type="file" wire:model="cover" label="Cover" name="cover" />
+                <flux:input type="file" label="Cover" name="cover" />
 
                 <div class="flex gap-4 justify-end">
                     <flux:button href="/admin/books">Cancel</flux:button>

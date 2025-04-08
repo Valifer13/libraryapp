@@ -10,6 +10,22 @@
         <td class="px-3 py-2 whitespace-nowrap">
             <flux:badge variant="pill" color="green" icon="check-circle">{{ $loan->status }}</flux:badge>
         </td>
+        <td class="px-3 py-2 whitespace-nowrap">
+            <flux:dropdown offset="-15" gap="2">
+                <flux:button icon="ellipsis-horizontal" size="sm"></flux:button>
+
+                <flux:menu>
+                    <flux:menu.item icon="pencil" as="a" href="/admin/loans/{{ $loan->id }}/edit">Edit</flux:menu.item>
+                    <flux:menu.item icon="magnifying-glass" as="a" href="/admin/loans/{{ $loan->id }}">Detail
+                    </flux:menu.item>
+                    <form action="/admin/loans/{{ $loan->id }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <flux:menu.item icon="trash" variant="danger" type="submit">Delete</flux:menu.item>
+                    </form>
+                </flux:menu>
+            </flux:dropdown>
+        </td>
     @elseif(request()->is('admin/loans/returning'))
         <td class="px-3 py-2 whitespace-nowrap">
             <flux:badge variant="pill" color="yellow" icon="arrow-uturn-left">{{ $loan->status }}</flux:badge>

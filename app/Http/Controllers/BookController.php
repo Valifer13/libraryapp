@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
@@ -35,11 +36,19 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'cover' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        // $coverName = time().'_'.$request->cover->extension();
+
+        $coverPath = $request->file('cover')->store('covers', 'public');
+        
         Book::query()->create([
             'title' => $request['title'],
             'author' => $request['author'],
             'isbn' => $request['isbn'],
-            'cover' => $request['cover'],
+            'cover' => $coverPath,
             'published_year' => $request['published_year'],
             'description' => $request['description'],
             'stock' => $request['stock'],
@@ -94,7 +103,14 @@ class BookController extends Controller
      */
     public function destroy(string $id)
     {
-        Book::destroy($id);
+        $book = Book::find($id);
+
+        if($book->cover && Storage::disk('public')->exists($book->cover)) {
+            Storage::disk('public')->delete($book->cover);
+        }
+
+        $book->delete();
+
         return redirect()->route('admin.books.index');
     }
 }

@@ -88,7 +88,8 @@ class LoanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Loan::destroy($id);
+        return redirect()->route('admin.loans.index');
     }
 
     public function borrowing()
