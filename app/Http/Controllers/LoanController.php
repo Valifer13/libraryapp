@@ -53,7 +53,14 @@ class LoanController extends Controller
     {
         $loan = Loan::find($id);
 
-        return view('admin.loans.edit', compact('loan'));
+        $statuses = [
+            'borrowed',
+            'overdue',
+            'returning',
+            'returned',
+        ];
+
+        return view('admin.loans.edit', compact('loan', 'statuses'));
     }
 
     /**
@@ -61,7 +68,19 @@ class LoanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $loan = Loan::find($id);
+
+        $loan->book_id = $request['book_id'];
+        $loan->user_id = $request['user_id'];
+        $loan->admin_id = $request['admin_id'];
+        $loan->borrow_date = $request['borrow_date'];
+        $loan->due_date = $request['due_date'];
+        $loan->return_date = $request['return_date'];
+        $loan->status = $request['status'];
+
+        $loan->save();
+
+        return redirect()->route('admin.loans.index');
     }
 
     /**
@@ -74,23 +93,38 @@ class LoanController extends Controller
 
     public function borrowing()
     {
-        $loans = Loan::notReturned()->with(['book', 'user', 'admin'])->paginate(30);
+        $loans = Loan::borrowed()->with(['book', 'user', 'admin']);
 
-        return view('admin.loans.borrowing', ['loans' => $loans]);
+        if (request('search')) {
+                $loans->whereHas(request('order'), fn($query) => $query->where(request('order') == 'book' ? 'title' : 'name', 'like', '%' . request('search') . '%'))
+                ->latest();
+        }
+
+        return view('admin.loans.borrowing', ['loans' => $loans->paginate(30)]);
     }
 
     public function overdue()
     {
-        $loans = Loan::overdue()->with(['book', 'user', 'admin'])->paginate(30);
+        $loans = Loan::overdue()->with(['book', 'user', 'admin']);
 
-        return view('admin.loans.overdue', ['loans' => $loans]);
+        if (request('search')) {
+                $loans->whereHas(request('order'), fn($query) => $query->where(request('order') == 'book' ? 'title' : 'name', 'like', '%' . request('search') . '%'))
+                ->latest();
+        }
+
+        return view('admin.loans.overdue', ['loans' => $loans->paginate(30)]);
     }
 
     public function returningPage()
     {
-        $loans = Loan::returning()->with(['book', 'user', 'admin'])->paginate(30);
+        $loans = Loan::returning()->with(['book', 'user', 'admin']);
+
+        if (request('search')) {
+                $loans->whereHas(request('order'), fn($query) => $query->where(request('order') == 'book' ? 'title' : 'name', 'like', '%' . request('search') . '%'))
+                ->latest();
+        }
         
-        return view('admin.loans.returning', ['loans' => $loans]);
+        return view('admin.loans.returning', ['loans' => $loans->paginate(30)]);
     }
 
     public function returning(string $id)
@@ -98,6 +132,7 @@ class LoanController extends Controller
         $loan = Loan::find($id);
 
         $loan->return_date = now();
+        $loan->admin_id = auth()->user()->id;
         $loan->status = 'returned';
 
         $loan->save();
@@ -107,8 +142,13 @@ class LoanController extends Controller
     
     public function history()
     {
-        $loans = Loan::returned()->with(['book', 'user', 'admin'])->paginate(30);
+        $loans = Loan::returned()->with(['book', 'user', 'admin']);
 
-        return view('admin.loans.history', ['loans' => $loans]);
+        if (request('search')) {
+                $loans->whereHas(request('order'), fn($query) => $query->where(request('order') == 'book' ? 'title' : 'name', 'like', '%' . request('search') . '%'))
+                ->latest();
+        }
+
+        return view('admin.loans.history', ['loans' => $loans->paginate(30)]);
     }
 }

@@ -22,16 +22,11 @@ class Loan extends Model
         'status',
     ];
 
-    public function scopeReturned($query)
+    public function scopeBorrowed($query)
     {
-        return $query->where('status', 'returned');
+        return $query->where('status', 'borrowed');
     }
-
-    public function scopeNotReturned($query)
-    {
-        return $query->where('status', '!=', 'returned');
-    }
-
+    
     public function scopeOverdue($query)
     {
         return $query->where('status', 'overdue');
@@ -40,6 +35,16 @@ class Loan extends Model
     public function scopeReturning($query)
     {
         return $query->where('status', 'returning');
+    }
+
+    public function scopeReturned($query)
+    {
+        return $query->where('status', 'returned');
+    }
+
+    public function scopeNotReturned($query)
+    {
+        return $query->where('status', '!=', 'returned');
     }
 
     public function book(): BelongsTo
