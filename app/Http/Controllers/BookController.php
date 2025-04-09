@@ -87,7 +87,7 @@ class BookController extends Controller
         $book->title = $request['title'];
         $book->author = $request['author'];
         $book->isbn = $request['isbn'];
-        $book->cover = $request['cover'];
+        $book->cover = $request['cover'] ?? $book->cover;
         $book->published_year = $request['published_year'];
         $book->description = $request['description'];
         $book->stock = $request['stock'];
