@@ -20,6 +20,8 @@ class Book extends Model
         'published_year',
         'description',
         'stock',
+        'liked',
+        'disliked',
         'category_id',
     ];
 

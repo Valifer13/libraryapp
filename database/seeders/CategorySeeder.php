@@ -15,17 +15,18 @@ class CategorySeeder extends Seeder
     {
         // Category::factory(10)->create();
 
-        Category::create([ 'name' => 'History' ]);
-        Category::create([ 'name' => 'Religious' ]);
-        Category::create([ 'name' => 'Adventure' ]);
-        Category::create([ 'name' => 'Fantasy' ]);
-        Category::create([ 'name' => 'Self Improvement' ]);
-        Category::create([ 'name' => 'Romance' ]);
-        Category::create([ 'name' => 'Horror' ]);
-        Category::create([ 'name' => 'Science' ]);
-        Category::create([ 'name' => 'Biography' ]);
-        Category::create([ 'name' => 'Education' ]);
-        Category::create([ 'name' => 'Health & Fitness' ]);
-        Category::create([ 'name' => 'Business' ]);
+        Category::create(['name' => 'History', 'color' => 'bg-yellow-700']); // warna seperti perkamen tua
+        Category::create(['name' => 'Religious', 'color' => 'bg-indigo-700']); // warna spiritual dan tenang
+        Category::create(['name' => 'Adventure', 'color' => 'bg-orange-600']); // cerah dan penuh energi
+        Category::create(['name' => 'Fantasy', 'color' => 'bg-purple-700']); // magis dan imajinatif
+        Category::create(['name' => 'Self Improvement', 'color' => 'bg-teal-600']); // segar dan positif
+        Category::create(['name' => 'Romance', 'color' => 'bg-rose-500']); // romantis dan hangat
+        Category::create(['name' => 'Horror', 'color' => 'bg-gray-900']); // gelap dan misterius
+        Category::create(['name' => 'Science', 'color' => 'bg-blue-600']); // rasional dan profesional
+        Category::create(['name' => 'Biography', 'color' => 'bg-amber-600']); // hangat dan mendalam
+        Category::create(['name' => 'Education', 'color' => 'bg-sky-500']); // cerah dan informatif
+        Category::create(['name' => 'Health & Fitness', 'color' => 'bg-green-600']); // segar dan sehat
+        Category::create(['name' => 'Business', 'color' => 'bg-gray-700']); // profesional dan serius
+
     }
 }

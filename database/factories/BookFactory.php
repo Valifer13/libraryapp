@@ -25,6 +25,8 @@ class BookFactory extends Factory
             'published_year' => fake()->year(),
             'description' => fake()->text(),
             'stock' => fake()->randomDigitNotZero(),
+            'liked' => fake()->numberBetween(),
+            'disliked' => fake()->numberBetween(),
             'category_id' => Category::factory(),
         ];
     }
