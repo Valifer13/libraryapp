@@ -7,12 +7,18 @@
 
 <body>
     <section class="w-full h-screen grid place-content-center">
-        <form action="/admin/login" method="post" class="grid gap-3 w-sm">
+        <form action="/admin/login" method="post" class="grid gap-5 w-sm">
             @csrf
-            <flux:legend>Admin Login</flux:legend>
-            <flux:input type="email" label="Email" name="email" />
-            <flux:input type="password" label="Password" name="password" />
-            <flux:button type="submit">Submit</flux:button>
+            <h2 class="text-sm text-zinc-500">Library Management</h2>
+            <h1 class="text-2xl text-white font-bold">Admin Login Page</h1>
+            <div class="grid gap-5">
+                <flux:input type="email" label="Email" name="email" />
+                <flux:input type="password" label="Password" name="password" />
+            </div>
+            <div class="flex gap-5 justify-end">
+                <flux:button as="a" href="/" icon="arrow-uturn-left">Back</flux:button>
+                <flux:button type="submit" icon:trailing="arrow-right" variant="primary">Submit</flux:button>
+            </div>
         </form>
     </section>
 </body>

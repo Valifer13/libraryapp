@@ -48,13 +48,11 @@
             <thead class="ltr:text-left rtl:text-right">
                 <tr class="*:font-medium *:text-gray-900 dark:*:text-white">
                     <th class="px-3 py-2 whitespace-nowrap">#</th>
-                    <th class="px-3 py-2 whitespace-nowrap">Title</th>
-                    <th class="px-3 py-2 whitespace-nowrap">Author</th>
-                    <th class="px-3 py-2 whitespace-nowrap">ISBN</th>
-                    <th class="px-3 py-2 whitespace-nowrap">Published Year</th>
-                    <th class="px-3 py-2 whitespace-nowrap">Stock</th>
+                    <th class="px-3 py-2 whitespace-nowrap">Book</th>
                     <th class="px-3 py-2 whitespace-nowrap">Category</th>
-                    <th class="px-3 py-2 whitespace-nowrap">Options</th>
+                    <th class="px-3 py-2 whitespace-nowrap">Stock</th>
+                    <th class="px-3 py-2 whitespace-nowrap">Like</th>
+                    <th class="px-3 py-2 whitespace-nowrap">Action</th>
                 </tr>
             </thead>
 

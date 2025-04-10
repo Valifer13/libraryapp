@@ -39,7 +39,7 @@
                 <flux:input type="file" wire:model="cover" label="Cover" name="cover" />
 
                 <div class="flex gap-4 justify-end">
-                    <flux:button href="/admin/books">Cancel</flux:button>
+                    <flux:button href="{{ url()->previous() }}">Cancel</flux:button>
                     <flux:button variant="primary" type="submit">Submit</flux:button>
                 </div>
             </div>
