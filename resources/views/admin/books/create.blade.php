@@ -1,10 +1,9 @@
 <x-admin.layouts.app :title="__('Add New Book')">
-    <form action="/admin/books" method="post" enctype="multipart/form-data">
+    <h1 class="text-2xl font-medium">Add New Book</h1>
+    <form action="/admin/books" method="post" enctype="multipart/form-data" class="mt-5">
         @csrf
         <flux:fieldset>
-            <flux:legend>Add New Book</flux:legend>
-
-            <div class="space-y-6">
+            <div class="space-y-6 border border-zinc-500 dark:border-zinc-400 px-3 py-4 rounded-lg bg-zinc-100 dark:bg-zinc-900">
                 <flux:input label="Title" placeholder="Book title..." name="title" class="max-w-sm" />
                 <flux:input label="Author" placeholder="Book author..." name="author" class="max-w-sm" />
 
@@ -23,8 +22,8 @@
                 <flux:input type="file" label="Cover" name="cover" />
 
                 <div class="flex gap-4 justify-end">
-                    <flux:button href="/admin/books">Cancel</flux:button>
-                    <flux:button variant="primary" type="submit">Submit</flux:button>
+                    <flux:button href="/admin/books" icon="arrow-uturn-left">Cancel</flux:button>
+                    <flux:button type="submit" icon="plus" class="bg-blue-400! hover:bg-blue-300! dark:bg-blue-500! dark:hover:bg-blue-400!">Add Book</flux:button>
                 </div>
             </div>
         </flux:fieldset>

@@ -1,6 +1,6 @@
 <x-admin.layouts.app :title="__('Book Management')">
     <h1 class="text-2xl font-medium">Book Management</h1>
-    <div class="flex justify-between items-center mt-5">
+    <div class="flex justify-between items-center mt-5 border border-zinc-500 dark:border-zinc-400 p-3 rounded-lg bg-zinc-100 dark:bg-zinc-900">
         <form action="/admin/books" method="get" class="max-w-xl">
             <flux:input.group>
                 <flux:input icon="magnifying-glass" placeholder="Search books..." name="search"
@@ -39,11 +39,11 @@
                 </flux:menu>
             </flux:dropdown>
             <div class="hidden lg:block">
-                <flux:button icon="plus" variant="primary" href="/admin/books/create">New Book</flux:button>
+                <flux:button icon="plus" href="/admin/books/create" class="bg-blue-400! hover:bg-blue-300! dark:bg-blue-500! dark:hover:bg-blue-400!">New Book</flux:button>
             </div>
         </div>
     </div>
-    <div class="overflow-x-auto mt-3">
+    <div class="overflow-x-auto mt-5 border border-zinc-500 dark:border-zinc-400 p-3 rounded-lg bg-zinc-100 dark:bg-zinc-900">
         <table class="min-w-full divide-y-2 divide-gray-200 dark:divide-zinc-700">
             <thead class="ltr:text-left rtl:text-right">
                 <tr class="*:font-medium *:text-gray-900 dark:*:text-white">

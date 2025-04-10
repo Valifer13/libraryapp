@@ -21,12 +21,12 @@ class BookFactory extends Factory
             'title' => fake()->sentence(3),
             'author' => fake()->name(),
             'isbn' => fake()->unique()->numberBetween(1, 9999999999999),
-            'cover' => fake()->slug() . ".jpg",
+            'cover' => null,
             'published_year' => fake()->year(),
             'description' => fake()->text(),
             'stock' => fake()->randomDigitNotZero(),
-            'liked' => fake()->numberBetween(),
-            'disliked' => fake()->numberBetween(),
+            'liked' => fake()->numberBetween(0, 100),
+            'disliked' => fake()->numberBetween(0, 100),
             'category_id' => Category::factory(),
         ];
     }

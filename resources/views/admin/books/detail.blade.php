@@ -5,7 +5,7 @@
         </div>
         <div class="flow-root w-full">
             <dl
-                class="mb-3 divide-y divide-gray-200 rounded border border-gray-200 text-sm *:even:bg-gray-50 dark:divide-zinc-700 dark:border-zinc-700 dark:*:even:bg-zinc-700">
+                class="mb-3 divide-y divide-gray-200 rounded border border-gray-200 text-sm *:even:bg-gray-50 dark:divide-zinc-700 dark:border-zinc-600 dark:*:even:bg-zinc-700">
                 <div class="grid grid-cols-1 gap-1 p-3 sm:grid-cols-3 sm:gap-4">
                     <dt class="font-medium text-zinc-900 dark:text-white">Title</dt>
 

@@ -1,11 +1,10 @@
 <x-admin.layouts.app :title="__('Edit Book')">
-    <form action="/admin/books/{{ $book->id }}" method="post">
+    <h1 class="text-2xl font-medium">Edit book with ID {{ $book->id }}</h1>
+    <form action="/admin/books/{{ $book->id }}" method="post" class="mt-5">
         @csrf
         @method('put')
         <flux:fieldset>
-            <flux:legend>Edit Book</flux:legend>
-
-            <div class="space-y-6">
+            <div class="space-y-6 border border-zinc-500 dark:border-zinc-400 px-3 py-4 rounded-lg bg-zinc-100 dark:bg-zinc-900">
                 <flux:input label="Title" placeholder="Book title..." name="title" class="max-w-sm"
                     value="{{ $book->title }}" />
                 <flux:input label="Author" placeholder="Book author..." name="author" class="max-w-sm"
@@ -39,8 +38,8 @@
                 <flux:input type="file" wire:model="cover" label="Cover" name="cover" />
 
                 <div class="flex gap-4 justify-end">
-                    <flux:button href="{{ url()->previous() }}">Cancel</flux:button>
-                    <flux:button variant="primary" type="submit">Submit</flux:button>
+                    <flux:button href="{{ url()->previous() }}" icon="arrow-uturn-left">Cancel</flux:button>
+                    <flux:button type="submit" icon="arrow-up-on-square" class="bg-blue-400! hover:bg-blue-300! dark:bg-blue-500! dark:hover:bg-blue-400!">Update</flux:button>
                 </div>
             </div>
         </flux:fieldset>
