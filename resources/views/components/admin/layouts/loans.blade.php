@@ -13,11 +13,11 @@
     </form>
     <div class="flex justify-between items-center mt-5">
         <div class="flex items-center gap-3 border-b-2 border-zinc-500">
-            <a href="/admin/loans" class="{{ request()->is('admin/loans') ? 'text-white border-b-2 border-white' : 'text-zinc-500 hover:text-zinc-300' }} font-medium p-3">List</a>
-            <a href="/admin/loans/borrowing" class="{{ request()->is('admin/loans/borrowing') ? 'text-white border-b-2 border-white' : 'text-zinc-500 hover:text-zinc-300' }} font-medium p-3">Borrowing <flux:badge size="sm" color="blue">{{ App\Models\Loan::borrowed()->count() }}</flux:badge></a>
-            <a href="/admin/loans/overdue" class="{{ request()->is('admin/loans/overdue') ? 'text-white border-b-2 border-white' : 'text-zinc-500 hover:text-zinc-300' }} font-medium p-3">Overdue <flux:badge size="sm" color="red">{{ App\Models\Loan::overdue()->count() }}</flux:badge></a>
-            <a href="/admin/loans/returning" class="{{ request()->is('admin/loans/returning') ? 'text-white border-b-2 border-white' : 'text-zinc-500 hover:text-zinc-300' }} font-medium p-3">Returning <flux:badge size="sm" color="yellow">{{ App\Models\Loan::returning()->count() }}</flux:badge></a>
-            <a href="/admin/loans/history" class="{{ request()->is('admin/loans/history') ? 'text-white border-b-2 border-white' : 'text-zinc-500 hover:text-zinc-300' }} font-medium p-3">History</a>
+            <a href="/admin/loans" class="{{ request()->is('admin/loans') ? 'text-white border-b-2 border-white' : 'text-zinc-500 hover:text-zinc-300' }} font-medium p-3" wire:navigate>List</a>
+            <a href="/admin/loans/borrowing" class="{{ request()->is('admin/loans/borrowing') ? 'text-white border-b-2 border-white' : 'text-zinc-500 hover:text-zinc-300' }} font-medium p-3" wire:navigate>Borrowing <flux:badge size="sm" color="blue">{{ App\Models\Loan::borrowed()->count() }}</flux:badge></a>
+            <a href="/admin/loans/overdue" class="{{ request()->is('admin/loans/overdue') ? 'text-white border-b-2 border-white' : 'text-zinc-500 hover:text-zinc-300' }} font-medium p-3" wire:navigate>Overdue <flux:badge size="sm" color="red">{{ App\Models\Loan::overdue()->count() }}</flux:badge></a>
+            <a href="/admin/loans/returning" class="{{ request()->is('admin/loans/returning') ? 'text-white border-b-2 border-white' : 'text-zinc-500 hover:text-zinc-300' }} font-medium p-3" wire:navigate>Returning <flux:badge size="sm" color="yellow">{{ App\Models\Loan::returning()->count() }}</flux:badge></a>
+            <a href="/admin/loans/history" class="{{ request()->is('admin/loans/history') ? 'text-white border-b-2 border-white' : 'text-zinc-500 hover:text-zinc-300' }} font-medium p-3" wire:navigate>History</a>
         </div>
         <div class="flex gap-3">
             <flux:dropdown>

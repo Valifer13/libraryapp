@@ -1,7 +1,7 @@
 <x-admin.layouts.app>
     <section class="flex flex-col md:flex-row gap-5 items-start">
-        <div class="max-w-[200px]">
-            <img src="{{ $book->cover ? asset('storage/' . $book->cover) : 'https://placehold.co/400x600' }}" alt="">
+        <div class="items-center w-full md:w-fit flex justify-center">
+            <img src="{{ $book->cover ? asset('storage/' . $book->cover) : 'https://placehold.co/400x600' }}" alt="" class="max-w-[200px]">
         </div>
         <div class="flow-root w-full">
             <dl
@@ -21,7 +21,7 @@
                 <div class="grid grid-cols-1 gap-1 p-3 sm:grid-cols-3 sm:gap-4">
                     <dt class="font-medium text-zinc-900 dark:text-white">ISBN</dt>
 
-                    <dd class="text-zinc-700 sm:col-span-2 dark:text-zinc-200">{{ preg_replace("/(.{4})(.{4})(.{4})(.{1})/", "$1-$2-$3-$4", $book->isbn) }}</dd>
+                    <dd class="text-zinc-700 sm:col-span-2 dark:text-zinc-200">{{ preg_replace("/(.{3})(.{3})(.{3})(.{3})(.{1})/", "$1-$2-$3-$4-$5", $book->isbn) }}</dd>
                 </div>
 
                 <div class="grid grid-cols-1 gap-1 p-3 sm:grid-cols-3 sm:gap-4 items-center">
