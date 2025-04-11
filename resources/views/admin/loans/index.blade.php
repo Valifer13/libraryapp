@@ -10,7 +10,7 @@
                     <th class="px-3 py-2 whitespace-nowrap">Borrow</th>
                     <th class="px-3 py-2 whitespace-nowrap">Due</th>
                     <th class="px-3 py-2 whitespace-nowrap">Status</th>
-                    <th class="px-3 py-2 whitespace-nowrap">Options</th>
+                    <th class="px-3 py-2 whitespace-nowrap">Action</th>
                 </tr>
             </thead>
 

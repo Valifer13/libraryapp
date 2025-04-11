@@ -4,7 +4,7 @@
         @csrf
         @method('put')
         <flux:fieldset>
-            <div class="space-y-6 border border-zinc-500 dark:border-zinc-400 px-3 py-4 rounded-lg bg-zinc-100 dark:bg-zinc-900">
+            <div class="space-y-6 border border-zinc-200 dark:border-zinc-400 px-3 py-4 rounded-lg bg-zinc-100 dark:bg-zinc-900">
                 <flux:input label="Title" placeholder="Book title..." name="title" class="max-w-sm"
                     value="{{ $book->title }}" />
                 <flux:input label="Author" placeholder="Book author..." name="author" class="max-w-sm"
