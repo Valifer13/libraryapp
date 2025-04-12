@@ -39,7 +39,7 @@
                 </flux:menu>
             </flux:dropdown>
             <div class="hidden lg:block">
-                <flux:button icon="plus" href="/admin/books/create" class="bg-blue-400! hover:bg-blue-300! dark:bg-blue-500! dark:hover:bg-blue-400!">New Book</flux:button>
+                <flux:button icon="plus" href="/admin/books/create" class="bg-blue-500! hover:bg-blue-400! text-white!">New Book</flux:button>
             </div>
         </div>
     </div>
@@ -88,13 +88,13 @@
 
         <li>
             <a href="{{ $books->url(1) }}"
-                class="block size-8 rounded border border-zinc-600 {{ $books->currentPage() == 1 ? 'bg-zinc-600' : '' }} text-center text-sm/8 font-medium text-white">
+                class="block size-8 rounded border border-zinc-600 {{ $books->currentPage() == 1 ? 'bg-zinc-300 dark:bg-zinc-600' : '' }} text-center text-sm/8 font-medium text-black dark:text-white">
                 1
             </a>
         </li>
 
         <li
-            class="{{ $books->currentPage() > 4 ? 'block' : 'hidden' }} size-8 rounded border border-zinc-600 text-center text-sm/8 font-medium text-white">
+            class="{{ $books->currentPage() > 4 ? 'block' : 'hidden' }} size-8 rounded border border-zinc-600 text-center text-sm/8 font-medium text-black dark:text-white">
             ...
         </li>
 
@@ -104,7 +104,7 @@
             @for ($i = 2; $i <= $books->currentPage() + 2; $i++)
                 <li>
                     <a href="{{ $books->url($i) }}"
-                        class="block size-8 rounded border border-zinc-600 {{ $books->currentPage() == $i ? 'bg-zinc-600' : '' }} text-center text-sm/8 font-medium text-white">
+                        class="block size-8 rounded border border-zinc-600 {{ $books->currentPage() == $i ? 'bg-zinc-300 dark:bg-zinc-600' : '' }} text-center text-sm/8 font-medium text-black dark:text-white">
                         {{ $i }}
                     </a>
                 </li>
@@ -113,7 +113,7 @@
             @for ($i = $books->lastPage(); $i <= $books->lastPage() - 2; $i++)
                 <li>
                     <a href="{{ $books->url($i) }}"
-                        class="block size-8 rounded border border-zinc-600 {{ $books->currentPage() == $i ? 'bg-zinc-600' : '' }} text-center text-sm/8 font-medium text-white">
+                        class="block size-8 rounded border border-zinc-600 {{ $books->currentPage() == $i ? 'bg-zinc-300 dark:bg-zinc-600' : '' }} text-center text-sm/8 font-medium text-black dark:text-white">
                         {{ $i }}
                     </a>
                 </li>
@@ -122,7 +122,7 @@
             @for ($i = $books->currentPage() - 2; $i <= $books->currentPage() + 2; $i++)
                 <li>
                     <a href="{{ $books->url($i) }}"
-                        class="block size-8 rounded border border-zinc-600 {{ $books->currentPage() == $i ? 'bg-zinc-600' : '' }} text-center text-sm/8 font-medium text-white">
+                        class="block size-8 rounded border border-zinc-600 {{ $books->currentPage() == $i ? 'bg-zinc-300 dark:bg-zinc-600' : '' }} text-center text-sm/8 font-medium text-black dark:text-white">
                         {{ $i }}
                     </a>
                 </li>
@@ -130,14 +130,14 @@
         @endif
 
         <li
-            class="{{ $books->currentPage() < ($books->lastPage() - 3) ? 'block' : 'hidden' }} size-8 rounded border border-zinc-600 text-center text-sm/8 font-medium text-white">
+            class="{{ $books->currentPage() < ($books->lastPage() - 3) ? 'block' : 'hidden' }} size-8 rounded border border-zinc-600 text-center text-sm/8 font-medium text-black dark:text-white">
             ...
         </li>
 
         @if ($books->lastPage() >= 3)
         <li>
             <a href="{{ $books->url($books->lastPage()) }}"
-                class="block size-8 rounded border border-zinc-600 {{ $books->currentPage() == $books->lastPage() ? 'bg-zinc-600' : '' }} text-center text-sm/8 font-medium text-white">
+                class="block size-8 rounded border border-zinc-600 {{ $books->currentPage() == $books->lastPage() ? 'bg-zinc-300 dark:bg-zinc-600' : '' }} text-center text-sm/8 font-medium text-black dark:text-white">
                 {{ $books->lastPage() }}
             </a>
         </li>

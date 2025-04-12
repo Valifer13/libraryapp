@@ -1,8 +1,10 @@
 <tr class="*:text-gray-900 *:first:font-medium dark:*:text-white">
     <td class="px-3 py-2 whitespace-nowrap">{{ $iter }}</td>
-    <td class="px-3 py-2 whitespace-nowrap">{{ $loan->book->title }}</td>
-    <td class="px-3 py-2 whitespace-nowrap">{{ $loan->user->name }}</td>
-    <td class="px-3 py-2 whitespace-nowrap">{{ $loan->admin->name }}</td>
+    <td class="px-3 py-2 whitespace-nowrap">
+        <h1 class="text-base">{{ $loan->book->title }}</h1>
+        <h2 class="text-sm text-zinc-400">User: {{ $loan->user->name }}</h2>
+        <h2 class="text-sm text-zinc-400">Admin: {{ $loan->admin->name }}</h2>
+    </td>
     <td class="px-3 py-2 whitespace-nowrap">{{ $loan->borrow_date }}</td>
     <td class="px-3 py-2 whitespace-nowrap">{{ $loan->due_date }}</td>
     @if(request()->is('admin/loans/history'))
@@ -50,17 +52,19 @@
             @endif
         </td>
         <td class="px-3 py-2 whitespace-nowrap">
-            <flux:button.group>
-                <flux:button icon="pencil-square" class="bg-yellow-500! hover:bg-yellow-400!"
-                    href="/admin/loans/{{ $loan->id }}/edit"></flux:button>
-                <flux:button icon="document-magnifying-glass" class="bg-blue-500! hover:bg-blue-400!"
-                    href="/admin/loans/{{ $loan->id }}"></flux:button>
-                <form action="/admin/loans/{{ $loan->id }}" method="post">
-                    @csrf
-                    @method('delete')
-                    <flux:button icon="trash" variant="danger" type="submit" class="cursor-pointer"></flux:button>
-                </form>
-            </flux:button.group>
+            <flux:dropdown>
+                <flux:button icon="ellipsis-horizontal"></flux:button>
+
+                <flux:menu>
+                    <flux:menu.item icon="pencil" href="/admin/loans/{{ $loan->id }}/edit">Edit</flux:menu.item>
+                    <flux:menu.item icon="magnifying-glass" href="/admin/loans/{{ $loan->id }}">Detail</flux:menu.item>
+                    <form action="/admin/loans/{{ $loan->id }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <flux:menu.item icon="trash" variant="danger" type="submit">Delete</flux:menu.item>
+                    </form>
+                </flux:menu>
+            </flux:dropdown>
         </td>
     @endif
 </tr>

@@ -10,7 +10,7 @@
         <form action="/admin/login" method="post" class="grid gap-5 w-sm">
             @csrf
             <h2 class="text-sm text-zinc-500">Library Management</h2>
-            <h1 class="text-2xl text-white font-bold">Admin Login Page</h1>
+            <h1 class="text-2xl text-black font-bold dark:text-white">Admin Login Page</h1>
             <div class="grid gap-5">
                 <flux:input type="email" label="Email" name="email" />
                 <flux:input type="password" label="Password" name="password" />

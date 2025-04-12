@@ -23,7 +23,7 @@
 
                 <div class="flex gap-4 justify-end">
                     <flux:button href="/admin/books" icon="arrow-uturn-left">Cancel</flux:button>
-                    <flux:button type="submit" icon="plus" class="bg-blue-400! hover:bg-blue-300! dark:bg-blue-500! dark:hover:bg-blue-400!">Add Book</flux:button>
+                    <flux:button type="submit" icon="plus" class="bg-blue-500! hover:bg-blue-400! text-white!">Add Book</flux:button>
                 </div>
             </div>
         </flux:fieldset>

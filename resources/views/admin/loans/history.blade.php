@@ -5,8 +5,6 @@
                 <tr class="*:font-medium *:text-gray-900 dark:*:text-white">
                     <th class="px-3 py-2 whitespace-nowrap">#</th>
                     <th class="px-3 py-2 whitespace-nowrap">Book</th>
-                    <th class="px-3 py-2 whitespace-nowrap">User</th>
-                    <th class="px-3 py-2 whitespace-nowrap">Admin</th>
                     <th class="px-3 py-2 whitespace-nowrap">Borrow</th>
                     <th class="px-3 py-2 whitespace-nowrap">Due</th>
                     <th class="px-3 py-2 whitespace-nowrap">Return</th>
