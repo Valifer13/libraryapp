@@ -20,9 +20,9 @@ class LoanFactory extends Factory
      */
     public function definition(): array
     {
-        $borrowDate = \Carbon\Carbon::parse(fake()->dateTimeBetween('-30 days', 'now'));
+        $borrowDate = \Carbon\Carbon::parse(fake()->dateTimeBetween('-7 days', 'now'));
         $dueDate = $borrowDate->copy()->addDays(7);
-        $returnDate = fake()->optional()->dateTimeBetween($borrowDate, $borrowDate->copy()->addDays(3));
+        $returnDate = fake()->optional(0.3)->dateTimeBetween($borrowDate, $borrowDate->copy()->addDays(3));
 
         if ($returnDate) {
             $status = 'returned';
