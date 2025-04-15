@@ -15,12 +15,12 @@ class BookController extends Controller
     public function index()
     {
         if (request('search')) {
-            $books = Book::with('category')->where(request('order'), 'like', '%' . request('search') . '%')->paginate(10);
+            $books = Book::with('category')->where(request('order'), 'like', '%' . request('search') . '%');
         } else {
-            $books = Book::with('category')->orderBy('title')->paginate(10);
+            $books = Book::with('category')->orderBy('title');
         }
 
-        return view('admin.books.index', ['books' => $books]);
+        return view('admin.books.index', ['books' => $books->paginate(10), 'total_books' => $books->count()]);
     }
 
     /**

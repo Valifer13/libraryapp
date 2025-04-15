@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LoanController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
@@ -22,9 +23,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::prefix('/loans')->middleware('auth:admin')->group(function () {
         Route::get('/borrowing', [LoanController::class, 'borrowing'])->name('loans.borrowing');
         Route::get('/overdue', [LoanController::class, 'overdue'])->name('loans.overdue');
+        Route::put('/overdue/{id}', [LoanController::class, 'overduePaid']);
         Route::get('/returning', [LoanController::class, 'returningPage'])->name('loans.returning-page');
         Route::put('/returning/{id}', [LoanController::class, 'returning']);
         Route::get('/history', [LoanController::class, 'history'])->name('loans.history');
     });
     Route::resource('/loans', LoanController::class)->middleware('auth:admin');
+
+    Route::resource('/categories', CategoryController::class)->middleware('auth:admin');
 });
