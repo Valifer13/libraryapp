@@ -14,8 +14,16 @@
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Platform')" class="grid">
                     <flux:navlist.item icon="home" :href="'/admin/dashboard'" :current="request()->is('admin/dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
-                    <flux:navlist.item icon="book-open" :href="'/admin/books'" :current="request()->is('admin/books*')" wire:navigate>{{ __('Book Management') }}</flux:navlist.item>
-                    <flux:navlist.item icon="clipboard-document-list" :href="'/admin/loans'" :current="request()->is('admin/loans*')" wire:navigate>{{ __('Loan Management') }}</flux:navlist.item>
+                </flux:navlist.group>
+                <flux:navlist.group :heading="__('Management')" class="grid">
+                    <flux:navlist.item icon="book-open" :href="'/admin/books'" :current="request()->is('admin/books*')" wire:navigate>{{ __('Books') }}</flux:navlist.item>
+                    <flux:navlist.item icon="tag" :href="'/admin/categories'" :current="request()->is('admin/categories*')" wire:navigate>{{ __('Categories') }}</flux:navlist.item>
+                    <flux:navlist.item icon="clipboard-document-list" :href="'/admin/loans'" :current="request()->is('admin/loans*')" wire:navigate>{{ __('Loans') }}</flux:navlist.item>
+                    <flux:navlist.item icon="banknotes" :href="'/admin/fines'" :current="request()->is('admin/fines*')" wire:navigate>{{ __('Fines') }}</flux:navlist.item>
+                </flux:navlist.group>
+                <flux:navlist.group :heading="__('Member')" class="grid">
+                    <flux:navlist.item icon="users" :href="'/admin/users'" :current="request()->is('admin/users*')" wire:navigate>{{ __('Users') }}</flux:navlist.item>
+                    <flux:navlist.item icon="user-circle" :href="'/admin/admins'" :current="request()->is('admin/admins*')" wire:navigate>{{ __('Admins') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 

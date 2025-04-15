@@ -1,6 +1,7 @@
 <x-admin.layouts.app :title="__('Loan Management')">
     <h1 class="text-2xl font-medium">Loan Management</h1>
-    <div class="flex justify-between items-center mt-3 border rounded-lg p-3 bg-zinc-100 dark:bg-zinc-900">
+    <div
+        class="flex justify-between items-center mt-3 border border-zinc-200 dark:border-zinc-400 rounded-lg p-3 bg-zinc-100 dark:bg-zinc-900">
         <form action="{{ url()->current() }}" method="get" class="max-w-sm">
             <flux:input.group>
                 <flux:input icon="magnifying-glass" placeholder="Search loans..." name="search"
@@ -57,9 +58,10 @@
             <a href="/admin/loans/history"
                 class="{{ request()->is('admin/loans/history') ? 'text-black dark:text-white border-b-2 dark:border-white border-black' : 'text-zinc-500 hover:text-zinc-300' }} font-medium p-3"
                 wire:navigate>History</a>
-            <div class="bg-zinc-100 h-0.5 w-full absolute bottom-0 left-0"></div>
+            <div class="bg-zinc-100 dark:bg-zinc-900 h-0.5 w-full absolute bottom-0 left-0"></div>
         </div>
-        <div class="border border-zinc-200 dark:border-zinc-400 rounded-b-lg rounded-e-lg bg-zinc-100 dark:bg-zinc-900 -mt-[1px]">
+        <div
+            class="border border-zinc-200 dark:border-zinc-400 rounded-b-lg rounded-e-lg bg-zinc-100 dark:bg-zinc-900 -mt-[1px]">
             {{ $slot }}
         </div>
     </div>

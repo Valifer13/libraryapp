@@ -43,11 +43,13 @@
             </div>
         </div>
     </div>
+    <div class="mt-5">
+        <h6 class="text-sm text-zinc-400">Total data loaded: {{ $total_books }}</h6>
+    </div>
     <div class="overflow-x-auto mt-5 border border-zinc-200 dark:border-zinc-400 p-3 rounded-lg bg-zinc-100 dark:bg-zinc-900">
         <table class="min-w-full divide-y-2 divide-gray-200 dark:divide-zinc-700">
             <thead class="ltr:text-left rtl:text-right">
                 <tr class="*:font-medium *:text-gray-900 dark:*:text-white">
-                    <th class="px-3 py-2 whitespace-nowrap">#</th>
                     <th class="px-3 py-2 whitespace-nowrap">Book</th>
                     <th class="px-3 py-2 whitespace-nowrap">Category</th>
                     <th class="px-3 py-2 whitespace-nowrap">Stock</th>
@@ -59,7 +61,7 @@
             <tbody class="divide-y divide-gray-200 dark:divide-zinc-700">
                 @if ($books->count())
                     @foreach ($books as $book)
-                        <x-admin.book-list :book="$book" :iter="__(($books->currentPage() - 1) * $books->perPage() + $loop->iteration)" />
+                        <x-admin.book-list :book="$book" />
                     @endforeach
                 @else
                     <tr>
