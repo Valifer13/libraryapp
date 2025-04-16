@@ -6,7 +6,7 @@
 </head>
 
 <body class="min-h-screen bg-white dark:bg-zinc-800">
-    <div id="placeholder" class="w-[250px] h-full hidden lg:block"></div>
+    <div id="placeholder" class="w-[255px] h-full hidden lg:block"></div>
     <flux:sidebar fixed stashable id="fixedSidebar"
         class="border-r border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 fixed left-0 top-0 bottom-0">
         <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />

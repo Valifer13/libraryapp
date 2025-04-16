@@ -6,7 +6,6 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LoanController;
 use Illuminate\Support\Facades\Route;
-use Livewire\Volt\Volt;
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [AdminAuthController::class, 'index'])->name('login');
