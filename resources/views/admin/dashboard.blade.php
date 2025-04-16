@@ -1,4 +1,4 @@
-<x-admin.layouts.app :title="__('Admin Dashboard')">
+<x-admin.layouts.app :title="__('Admin Dashboard')" :page="'admin-dashboard'">
     <h1 class="text-2xl font-medium mb-5">Hi, {{ auth()->user()->name }} 👋 Here's what today!</h1>
     <div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
         <div class="grid auto-rows-min gap-4 md:grid-cols-3">

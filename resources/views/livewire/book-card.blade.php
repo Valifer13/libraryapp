@@ -11,8 +11,8 @@
     </button>
 
     <div class="h-60 md:h-52 w-full bg-zinc-100 grid place-content-center overflow-hidden">
-        <img src="{{ $cover ?? 'https://placehold.co/250x400' }}" alt=""
-            class="group-hover:scale-105 transition" width="120" height="200" />
+        <img src="{{ $cover ? asset('storage/' . $cover) : 'https://placehold.co/200x400' }}" alt=""
+            class="group-hover:scale-105 transition" width="140" height="200" />
     </div>
 
     <div

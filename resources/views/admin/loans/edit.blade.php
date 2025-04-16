@@ -1,4 +1,4 @@
-<x-admin.layouts.app :title="__('Edit Loan')">
+<x-admin.layouts.app :title="__('Edit Loan')" :page="'admin-loans-edit'">
     <form action="/admin/loans/{{ $loan->id }}" method="post" class="grid gap-5">
         @csrf
         @method('put')

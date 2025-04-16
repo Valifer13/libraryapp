@@ -9,7 +9,7 @@ class UserDashboardController extends Controller
 {
     public function booksPage()
     {
-        $books = Book::with('category')->get();
+        $books = Book::with('category')->latest()->get();
 
         return view('books', ['books' => $books]);
     }
