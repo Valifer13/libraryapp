@@ -7,6 +7,9 @@ switch (page) {
     case 'admin-loans-edit':
         import ('./pages/admin/loansEdit').then(module => module.init());
         break;
+    // case 'user-books':
+    //     import ('./pages/user/books').then(module => module.init());
+    //     break;
     default:
         console.log('No page-specific JS loaded.');
         break;

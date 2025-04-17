@@ -1,4 +1,4 @@
-<div class="group relative flex flex-col overflow-hidden w-48 md:w-64 h-full border border-zinc-200">
+<div class="group relative flex flex-col overflow-hidden w-56 h-full border border-zinc-200">
     <button
         class="absolute end-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75 cursor-pointer">
         <span class="sr-only">Wishlist</span>
@@ -10,7 +10,7 @@
         </svg>
     </button>
 
-    <div class="h-60 md:h-52 w-full bg-zinc-100 grid place-content-center overflow-hidden">
+    <div class="h-52 w-full bg-zinc-100 grid place-content-center overflow-hidden">
         <img src="{{ $cover ? asset('storage/' . $cover) : 'https://placehold.co/200x400' }}" alt=""
             class="group-hover:scale-105 transition" width="140" height="200" />
     </div>
@@ -18,12 +18,12 @@
     <div
         class="flex flex-col justify-between grow gap-2 relative border-t border-t-zinc-200 bg-white dark:border-zinc-500 dark:bg-zinc-900 p-3">
         <div class="flex w-full justify-between items-center">
-            <flux:badge variant="pill" color="{{ substr($category->color, 3, -4) }}">{{ $category->name }}
+            <flux:badge variant="pill" color="{{ substr($category->color, 3, -4) }}" class="text-xs!">{{ $category->name }}
             </flux:badge>
             <span class="text-xs text-zinc-500">Like: {{ $liked }}</span>
         </div>
 
-        <h3 class="text-lg font-medium text-gray-900">{{ Str::limit($title, 25) }}</h3>
+        <h3 class="text-md lg:text-lg font-medium text-gray-900">{{ Str::limit($title, 25) }}</h3>
 
         <p class="text-xs text-gray-700">{{ $author }}</p>
 
