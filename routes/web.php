@@ -15,9 +15,6 @@ Route::view('dashboard', 'dashboard')
 Route::get('books', [UserDashboardController::class, 'booksPage'])
     ->middleware(['auth', 'verified'])
     ->name('books');
-// Route::get('books/search', [UserDashboardController::class, 'booksSearch'])
-//     ->middleware(['auth', 'verified'])
-//     ->name('books.search');
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');

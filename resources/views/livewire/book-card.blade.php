@@ -1,35 +1,25 @@
-<div class="group relative flex flex-col overflow-hidden w-56 h-full border border-zinc-200">
-    <button
-        class="absolute end-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75 cursor-pointer">
-        <span class="sr-only">Wishlist</span>
-
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-            class="size-4">
-            <path stroke-linecap="round" stroke-linejoin="round"
-                d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
-        </svg>
-    </button>
-
-    <div class="h-52 w-full bg-zinc-100 grid place-content-center overflow-hidden">
-        <img src="{{ $cover ? asset('storage/' . $cover) : 'https://placehold.co/200x400' }}" alt=""
-            class="group-hover:scale-105 transition" width="140" height="200" />
+<div
+    class="group flex flex-col relative justify-center items-center w-[180px] h-[300px] rounded-lg border bg-zinc-50 border-zinc-200 hover:border-zinc-300 hover:bg-zinc-100 transition cursor-pointer">
+    <div class="max-w-[100px] max-h-[160px] shadow-lg transition group-hover:scale-105">
+        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1655988385i/40121378.jpg"
+            alt="">
     </div>
-
     <div
-        class="flex flex-col justify-between grow gap-2 relative border-t border-t-zinc-200 bg-white dark:border-zinc-500 dark:bg-zinc-900 p-3">
-        <div class="flex w-full justify-between items-center">
-            <flux:badge variant="pill" color="{{ substr($category->color, 3, -4) }}" class="text-xs!">{{ $category->name }}
-            </flux:badge>
-            <span class="text-xs text-zinc-500">Like: {{ $liked }}</span>
+        class="relative grid -bottom-6 box-border w-[180px] h-[100px] rounded-lg border px-2 py-3 gap-1 transition bg-white group-hover:border-zinc-300">
+        <div class="flex flex-col gap-0.5">
+            <h1 class="text-base font-medium">Book Title</h1>
+            <p class="text-xs text-zinc-500">Author</p>
         </div>
-
-        <h3 class="text-md lg:text-lg font-medium text-gray-900">{{ Str::limit($title, 25) }}</h3>
-
-        <p class="text-xs text-gray-700">{{ $author }}</p>
-
-        <form class="">
-            <flux:button icon="magnifying-glass" class="w-full! bg-blue-500! hover:bg-blue-400!">Detail
-            </flux:button>
-        </form>
+        <div class="flex justify-between items-center">
+            <flux:badge size="sm" variant="pill">Category</flux:badge>
+            <div class="flex gap-1 items-center text-blue-500">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282m0 0h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23H5.904m10.598-9.75H14.25M5.904 18.5c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 0 1-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 9.953 4.167 9.5 5 9.5h1.053c.472 0 .745.556.5.96a8.958 8.958 0 0 0-1.302 4.665c0 1.194.232 2.333.654 3.375Z" />
+                </svg>
+                <span class="text-sm">10</span>
+            </div>
+        </div>
     </div>
 </div>
