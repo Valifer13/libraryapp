@@ -28,7 +28,7 @@
                 <form action="/admin/books/{{ $book->id }}" method="post">
                     @csrf
                     @method('delete')
-                    <flux:menu.item icon="trash" variant="danger" type="submit">Delete</flux:menu.item>
+                    <flux:menu.item icon="trash" variant="danger" type="submit" onclick="return confirm(`are you sure you want to delete {{ $book->title }}?`)">Delete</flux:menu.item>
                 </form>
             </flux:menu>
         </flux:dropdown>

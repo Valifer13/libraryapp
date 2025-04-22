@@ -2,12 +2,15 @@
 
 namespace App\Livewire;
 
+use App\Models\Book;
 use Livewire\Component;
 
 class BookCard extends Component
 {
-    public function mount() {
+    public $book;
 
+    public function mount(Book $book) {
+        $this->book = $book;
     }
 
     public function render()

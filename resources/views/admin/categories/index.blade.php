@@ -1,6 +1,5 @@
 <x-admin.layouts.app :title="__('Book Category Management')">
     <h1 class="text-2xl font-medium">Book Category Management</h1>
-
     <div
         class="mt-5 p-3 rounded-lg flex justify-between bg-zinc-100 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-400">
         <form action="/admin/categories" method="get">
@@ -52,7 +51,9 @@
                                     <form action="/admin/categories/{{ $category->id }}" method="post">
                                         @csrf
                                         @method('delete')
-                                        <flux:menu.item icon="trash" variant="danger" type="submit">Delete</flux:menu.item>
+                                        <flux:menu.item icon="trash" variant="danger" type="submit"
+                                            onclick="return confirm('Are you sure you want to delete category {{ $category->name }}')">
+                                            Delete</flux:menu.item>
                                     </form>
                                 </flux:menu>
                             </flux:dropdown>

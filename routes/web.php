@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\UserDashboardController;
+use App\Http\Controllers\User\BookController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -12,9 +12,10 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::get('books', [UserDashboardController::class, 'booksPage'])
-    ->middleware(['auth', 'verified'])
-    ->name('books');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('books', [BookController::class, 'index'])->name('books');
+    Route::get('books/{slug}', [BookController::class, 'show'])->name('books.detail');
+});
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');

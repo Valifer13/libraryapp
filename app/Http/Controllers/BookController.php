@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class BookController extends Controller
 {
@@ -17,7 +18,7 @@ class BookController extends Controller
         if (request('search')) {
             $books = Book::with('category')->where(request('order'), 'like', '%' . request('search') . '%');
         } else {
-            $books = Book::with('category')->orderBy('title');
+            $books = Book::with('category')->latest();
         }
 
         return view('admin.books.index', ['books' => $books->paginate(10), 'total_books' => $books->count()]);
@@ -46,6 +47,7 @@ class BookController extends Controller
         
         Book::query()->create([
             'title' => $request['title'],
+            'slug' => Str::slug($request['title']),
             'author' => $request['author'],
             'isbn' => $request['isbn'],
             'cover' => $coverPath,
@@ -87,6 +89,7 @@ class BookController extends Controller
         $book = Book::find($id);
 
         $book->title = $request['title'];
+        $book->slug = Str::slug($request['title']);
         $book->author = $request['author'];
         $book->isbn = $request['isbn'];
         $book->cover = $request['cover'] ?? $book->cover;

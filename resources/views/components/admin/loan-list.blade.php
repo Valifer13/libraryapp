@@ -1,7 +1,7 @@
 <tr class="*:text-gray-900 *:first:font-medium dark:*:text-white">
     <td class="px-3 py-2 whitespace-nowrap">{{ $iter }}</td>
     <td class="px-3 py-2 whitespace-nowrap">
-        <h1 class="text-base">{{ $loan->book->title }}</h1>
+        <h1 class="text-base">{{ $loan->book->title ?? 'unknown' }}</h1>
         <h2 class="text-sm text-zinc-400">User: {{ $loan->user->name }}</h2>
         <h2 class="text-sm text-zinc-400">Admin: {{ $loan->admin->name }}</h2>
     </td>

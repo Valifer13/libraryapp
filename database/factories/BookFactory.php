@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Book>
@@ -17,8 +18,10 @@ class BookFactory extends Factory
      */
     public function definition(): array
     {
+        $title = fake()->sentence(3);
         return [
-            'title' => fake()->sentence(3),
+            'title' => $title,
+            'slug' => Str::slug($title),
             'author' => fake()->name(),
             'isbn' => fake()->unique()->numberBetween(1, 9999999999999),
             'cover' => null,
