@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             WishlistSeeder::class,
             LoanSeeder::class,
             FineSeeder::class,
+            BookReactionSeeder::class,
         ]);
 
         // $this->call([

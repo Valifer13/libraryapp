@@ -20,8 +20,6 @@ return new class extends Migration {
             $table->string('published_year');
             $table->text('description');
             $table->integer('stock');
-            $table->integer('liked')->default(0);
-            $table->integer('disliked')->default(0);
             $table->foreignId('category_id')->nullable()->constrained('categories')->nullOnDelete();
             $table->timestamps();
         });
