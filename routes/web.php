@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\User\BookController;
+use App\Http\Controllers\User\LoanController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -15,6 +16,8 @@ Route::view('dashboard', 'dashboard')
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('books', [BookController::class, 'index'])->name('books');
     Route::get('books/{slug}', [BookController::class, 'show'])->name('books.detail');
+    Route::post('books/{book_id}', [LoanController::class, 'borrowing']);
+    Route::get('loans', [LoanController::class, 'index'])->name('loans');
 });
 
 Route::middleware(['auth'])->group(function () {

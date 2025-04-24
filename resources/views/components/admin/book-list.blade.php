@@ -13,8 +13,8 @@
     <td class="px-3 py-2 whitespace-nowrap">{{ $book->stock }}</td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="rounded-2xl w-fit flex gap-0 divide-zinc-500 divide-x-2 items-center">
-            <flux:badge variant="pill" icon="hand-thumb-up" class="rounded-e-none! border border-blue-600 border-e-0" color="blue">{{ $book->liked }}</flux:badge>
-            <flux:badge variant="pill" icon="hand-thumb-down" class="rounded-s-none! border border-red-600 border-s-0" color="red">{{ $book->disliked }}</flux:badge>
+            <flux:badge variant="pill" icon="hand-thumb-up" class="rounded-e-none! border border-blue-600 border-e-0" color="blue">0</flux:badge>
+            <flux:badge variant="pill" icon="hand-thumb-down" class="rounded-s-none! border border-red-600 border-s-0" color="red">0</flux:badge>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
