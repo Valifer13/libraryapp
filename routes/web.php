@@ -18,6 +18,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('books/{slug}', [BookController::class, 'show'])->name('books.detail');
     Route::post('books/{book_id}', [LoanController::class, 'borrowing']);
     Route::get('loans', [LoanController::class, 'index'])->name('loans');
+    Route::post('loans/{id}', [LoanController::class, 'returning']);
+    Route::get('history', [LoanController::class, 'history'])->name('history');
 });
 
 Route::middleware(['auth'])->group(function () {

@@ -9,13 +9,17 @@ use Illuminate\Http\Request;
 
 class LoanController extends Controller
 {
-    public function index() {
-        $loans = auth()->user()->loans;
+    public function index()
+    {
+        $loans = Loan::where('user_id', auth()->user()->id)
+            ->where('status', '!=', 'returned')
+            ->get();
 
         return view('loans.index', compact('loans'));
     }
 
-    public function borrowing(String $book_id) {
+    public function borrowing(String $book_id)
+    {
         $book = Book::find($book_id);
 
         if ($book->stock <= 0) {
@@ -37,9 +41,30 @@ class LoanController extends Controller
         $book->save();
 
         return redirect()->route('books.detail', [$book->slug])->with([
-                'type' => 'success',
-                'status' => 'Book borrowed!',
-                'message' => 'The book successfully borrowed, please return it when the time is come.',
-            ]);
+            'type' => 'success',
+            'status' => 'Book borrowed!',
+            'message' => 'The book successfully borrowed, please return it when the time is come.',
+        ]);
+    }
+
+    public function returning(String $id)
+    {
+        $loan = Loan::find($id);
+
+        $loan->status = 'returning';
+
+        $loan->save();
+
+        return redirect()->route('loans');
+    }
+
+    public function history()
+    {
+        $loans = Loan::where('user_id', auth()->user()->id)
+            ->where('status', 'returned')
+            ->latest()
+            ->get();
+        
+        return view('loans.history', compact('loans'));
     }
 }

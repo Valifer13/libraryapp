@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Loan;
 use Illuminate\Http\Request;
 
@@ -145,12 +146,15 @@ class LoanController extends Controller
     public function returning(string $id)
     {
         $loan = Loan::find($id);
+        $book = Book::find($loan->book_id);
 
         $loan->return_date = now();
         $loan->admin_id = auth()->user()->id;
         $loan->status = 'returned';
+        $book->stock += 1;
 
         $loan->save();
+        $book->save();
 
         return redirect()->route('admin.loans.returning-page');
     }

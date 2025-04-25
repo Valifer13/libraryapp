@@ -35,4 +35,4 @@ Schedule::job(function () {
             $overdueLoan->fine->increment('amount', 2.00);
         }
     }
-})->everyTwoMinutes();
+})->daily();

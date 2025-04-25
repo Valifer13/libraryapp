@@ -3,7 +3,7 @@
     <td class="px-3 py-2 whitespace-nowrap">
         <h1 class="text-base">{{ $loan->book->title ?? 'unknown' }}</h1>
         <h2 class="text-sm text-zinc-400">User: {{ $loan->user->name }}</h2>
-        <h2 class="text-sm text-zinc-400">Admin: {{ $loan->admin->name }}</h2>
+        <h2 class="text-sm text-zinc-400">Admin: {{ $loan->admin->name ?? 'admin' }}</h2>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">{{ $loan->borrow_date }}</td>
     <td class="px-3 py-2 whitespace-nowrap">{{ $loan->due_date }}</td>

@@ -55,7 +55,7 @@
             </div>
         </div>
     @endif
-    <section class="flex gap-10">
+    <section class="flex gap-10 justify-center">
         <div class="max-w-[230px] max-h-[350px] drop-shadow-lg">
             <img src="{{ $book->cover ? asset('storage/' . $book->cover) : 'https://placehold.co/400x600' }}"
                 alt="">
@@ -74,10 +74,14 @@
             <p class="max-h-[150px] max-w-[650px] overflow-y-auto pe-5 text-justify text-zinc-700 dark:text-zinc-400">
                 {{ $book->description }}</p>
             <div class="flex gap-5 mt-2 items-center">
-                <form action="/books/{{ $book->id }}" method="post">
-                    @csrf
-                    <flux:button variant="primary" icon="shopping-cart" type="submit">Borrow Now</flux:button>
-                </form>
+                @if ($book->stock > 0)
+                    <form action="/books/{{ $book->id }}" method="post">
+                        @csrf
+                        <flux:button variant="primary" icon="shopping-cart" type="submit">Borrow Now</flux:button>
+                    </form>
+                @else
+                    <flux:button variant="filled" icon="shopping-cart" class="line-through!">Borrow Now</flux:button>
+                @endif
                 <flux:button icon="bookmark">Add to Wishlist</flux:button>
                 <p>
                     Stock: {{ $book->stock }}
