@@ -3,15 +3,26 @@
         <h1 class="text-2xl font-bold">Book Lists</h1>
         <div class="p-3 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-900 mt-4">
             <form action="/books" method="get">
-                <flux:input icon="magnifying-glass" placeholder="Search book..." name="search"
-                    value="{{ request('search') }}" class="max-w-sm!" />
+                <flux:input.group class="max-w-sm">
+                    <flux:input placeholder="Search book..." name="search" value="{{ request('search') }}" />
+
+                    <flux:select class="max-w-fit" name="order">
+                        <flux:select.option selected value="title">Title</flux:select.option>
+                        <flux:select.option value="author">Author</flux:select.option>
+                        <flux:select.option value="isbn">ISBN</flux:select.option>
+                    </flux:select>
+                </flux:input.group>
             </form>
         </div>
         <div
             class="grid grid-cols-[repeat(auto-fill,_minmax(160px,_1fr))] md:grid-cols-[repeat(auto-fill,_minmax(180px,_1fr))] gap-3 mt-4 p-5 place-content-center border bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 rounded-lg">
-            @foreach ($books as $book)
-                <livewire:book-card :book="$book" />
-            @endforeach
+            @if ($books->count() > 0)
+                @foreach ($books as $book)
+                    <livewire:book-card :book="$book" />
+                @endforeach
+            @else
+                <h1 class="text-2xl font-medium">There are no books at all!</h1>
+            @endif
         </div>
         <div class="mt-5">
             <ul class="flex justify-center gap-1 text-zinc-900 dark:text-white">

@@ -17,7 +17,9 @@
                 <tbody class="divide-y divide-zinc-200 *:even:bg-zinc-50 dark:divide-zinc-700 dark:*:even:bg-zinc-800">
                     @foreach ($loans as $loan)
                         <tr class="*:text-gray-900 *:first:font-medium dark:*:text-white">
-                            <td class="px-3 py-2 whitespace-nowrap">{{ $loan->book->title }}</td>
+                            <td class="px-3 py-2 whitespace-nowrap">
+                                <a href="/books/{{ $loan->book->slug }}" class="cursor-pointer hover:underline">{{ $loan->book->title }}</a>
+                            </td>
                             <td class="px-3 py-2 whitespace-nowrap">{{ $loan->borrow_date }}</td>
                             <td class="px-3 py-2 whitespace-nowrap">{{ $loan->return_date }}</td>
                             <td class="px-3 py-2 whitespace-nowrap">

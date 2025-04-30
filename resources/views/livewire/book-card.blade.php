@@ -13,7 +13,7 @@
         </div>
         <div class="flex justify-between items-center">
             <a href="/categories/{{ Str::lower($book->category->name) }}">
-                <flux:badge as="button" size="sm" color="{{ substr($book->category->color, 3, -4) }}">{{ $book->category->name }}</flux:badge>
+                <flux:badge as="button" size="sm" color="{{ substr($book->category->color, 3, -4) }}">{{ Str::limit($book->category->name, 13) }}</flux:badge>
             </a>
             <div class="flex gap-1 items-center text-blue-500">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

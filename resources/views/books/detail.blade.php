@@ -55,13 +55,15 @@
             </div>
         </div>
     @endif
-    <section class="flex gap-10 justify-center">
-        <div class="max-w-[230px] max-h-[350px] drop-shadow-lg">
-            <img src="{{ $book->cover ? asset('storage/' . $book->cover) : 'https://placehold.co/400x600' }}"
-                alt="">
+    <section class="flex flex-col md:flex-row gap-10 justify-center align-middle">
+        <div class="grid w-full md:w-fit place-content-center">
+            <div class="max-w-[230px] max-h-[350px] drop-shadow-lg">
+                <img src="{{ $book->cover ? asset('storage/' . $book->cover) : 'https://placehold.co/400x600' }}"
+                    alt="">
+            </div>
         </div>
         <div class="flex flex-col gap-3">
-            <h1 class="text-4xl font-medium">{{ $book->title }}</h1>
+            <h1 class="text-3xl md:text-4xl font-bold">{{ $book->title }}</h1>
             <div class="flex gap-5">
                 <h2 class="text-lg text-zinc-400 dark:text-zinc-300">By <a href="#"
                         class="font-medium transition cursor-pointer text-black dark:text-blue-800 hover:text-blue-500">{{ $book->author }}</a>
@@ -82,7 +84,10 @@
                 @else
                     <flux:button variant="filled" icon="shopping-cart" class="line-through!">Borrow Now</flux:button>
                 @endif
-                <flux:button icon="bookmark">Add to Wishlist</flux:button>
+                <form action="/wishlists/{{ $book->id }}" method="post">
+                    @csrf
+                    <flux:button icon="bookmark" type="submit">Add to Wishlist</flux:button>
+                </form>
                 <p>
                     Stock: {{ $book->stock }}
                 </p>

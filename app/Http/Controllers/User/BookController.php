@@ -11,7 +11,7 @@ class BookController extends Controller
     public function index()
     {
         if (request('search')) {
-            $books = Book::where('title', 'LIKE', '%' . request('search') . '%')
+            $books = Book::where(request('order'), 'LIKE', '%' . request('search') . '%')
                 ->with('category')
                 ->latest()
                 ->paginate(30);

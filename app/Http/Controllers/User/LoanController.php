@@ -60,7 +60,7 @@ class LoanController extends Controller
 
     public function history()
     {
-        $loans = Loan::where('user_id', auth()->user()->id)
+        $loans = Loan::with('book')->where('user_id', auth()->user()->id)
             ->where('status', 'returned')
             ->latest()
             ->get();

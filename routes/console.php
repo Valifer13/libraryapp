@@ -20,7 +20,7 @@ Schedule::job(function () {
         ->update(['status' => 'overdue']);
 
     $this->info("Updated $affected loan(s) to overdue.");
-})->everyTwoMinutes();
+})->daily();
 
 Schedule::job(function () {
     $overdueLoans = Loan::where('status', 'overdue')->get();

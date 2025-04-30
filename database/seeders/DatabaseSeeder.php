@@ -13,20 +13,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call([
-            UserSeeder::class,
-            AdminSeeder::class,
-            CategorySeeder::class,
-            BookSeeder::class,
-            WishlistSeeder::class,
-            LoanSeeder::class,
-            FineSeeder::class,
-            BookReactionSeeder::class,
-        ]);
-
         // $this->call([
+        //     UserSeeder::class,
         //     AdminSeeder::class,
         //     CategorySeeder::class,
+        //     BookSeeder::class,
+        //     WishlistSeeder::class,
+        //     LoanSeeder::class,
+        //     FineSeeder::class,
+        //     BookReactionSeeder::class,
         // ]);
+
+        $this->call([
+            AdminSeeder::class,
+            UserSeeder::class,
+            CategorySeeder::class,
+        ]);
     }
 }
