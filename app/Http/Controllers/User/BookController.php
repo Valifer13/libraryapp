@@ -30,7 +30,14 @@ class BookController extends Controller
 
         $user = auth()->user();
         $inWishlist = $user->wishlists()->where('book_id', $book->id)->exists();
+        $alreadyBorrowed = $user->loans()->where('status', '!=', 'returned')->where('book_id', $book->id)->exists();
+        $totalLoans = $user->loans()->where('status', '!=', 'returned')->count();
 
-        return view('books.detail', compact('book', 'inWishlist'));
+        return view('books.detail', compact(
+            'book',
+            'inWishlist',
+            'alreadyBorrowed',
+            'totalLoans',
+        ));
     }
 }

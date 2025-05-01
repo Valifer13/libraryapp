@@ -76,13 +76,17 @@
             <p class="max-h-[150px] max-w-[650px] overflow-y-auto pe-5 text-justify text-zinc-700 dark:text-zinc-400">
                 {{ $book->description }}</p>
             <div class="flex gap-5 mt-2 items-center">
-                @if ($book->stock > 0)
+                @if ($book->stock == 0)
+                    <flux:button variant="filled" icon="shopping-cart" class="line-through!">Book stock is empty</flux:button>
+                @elseif ($alreadyBorrowed)
+                    <flux:button variant="filled" icon="shopping-cart" class="line-through!">Already Borrowed</flux:button>
+                @elseif ($totalLoans >= 3)
+                    <flux:button variant="filled" icon="shopping-cart" class="line-through!">Limit Order</flux:button>
+                @else
                     <form action="/books/{{ $book->id }}" method="post">
                         @csrf
                         <flux:button variant="primary" icon="shopping-cart" type="submit">Borrow Now</flux:button>
                     </form>
-                @else
-                    <flux:button variant="filled" icon="shopping-cart" class="line-through!">Borrow Now</flux:button>
                 @endif
 
                 @if ($inWishlist)

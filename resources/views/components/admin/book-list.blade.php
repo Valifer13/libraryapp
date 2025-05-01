@@ -1,7 +1,7 @@
 <tr class="*:text-gray-900 *:first:font-medium dark:*:text-white">
     <td class="px-3 py-2 whitespace-nowrap flex items-center gap-2">
         <img src="{{ $book->cover ? asset('storage/' . $book->cover) : 'https://placehold.co/400x600' }}"
-            alt="cover book" class="max-w-28">
+            alt="cover book" class="max-w-28 drop-shadow-lg">
         <div>
             <a href="/admin/books/{{ $book->id }}" class="text-md hover:underline">{{ $book->title }}</a>
             <p class="text-sm text-zinc-400">{{ $book->author }}</p>
