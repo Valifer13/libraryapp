@@ -84,10 +84,15 @@
                 @else
                     <flux:button variant="filled" icon="shopping-cart" class="line-through!">Borrow Now</flux:button>
                 @endif
-                <form action="/wishlists/{{ $book->id }}" method="post">
-                    @csrf
-                    <flux:button icon="bookmark" type="submit">Add to Wishlist</flux:button>
-                </form>
+
+                @if ($inWishlist)
+                    <flux:button variant="filled" class="line-through!">Add to Wishlist</flux:button>
+                @else
+                    <form action="/wishlists/{{ $book->id }}" method="post">
+                        @csrf
+                        <flux:button icon="bookmark" type="submit">Add to Wishlist</flux:button>
+                    </form>
+                @endif
                 <p>
                     Stock: {{ $book->stock }}
                 </p>

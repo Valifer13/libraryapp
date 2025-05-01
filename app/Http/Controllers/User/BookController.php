@@ -28,6 +28,9 @@ class BookController extends Controller
     {
         $book = Book::where('slug', $slug)->first();
 
-        return view('books.detail', compact('book'));
+        $user = auth()->user();
+        $inWishlist = $user->wishlists()->where('book_id', $book->id)->exists();
+
+        return view('books.detail', compact('book', 'inWishlist'));
     }
 }
