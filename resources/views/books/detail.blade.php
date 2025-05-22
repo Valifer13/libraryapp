@@ -56,10 +56,14 @@
         </div>
     @endif
     <section class="flex flex-col md:flex-row gap-10 justify-center align-middle">
-        <div class="grid w-full md:w-fit place-content-center">
+        <div class="grid w-full md:w-fit place-content-center gap-5">
             <div class="max-w-[230px] max-h-[350px] drop-shadow-lg">
                 <img src="{{ $book->cover ? asset('storage/' . $book->cover) : 'https://placehold.co/400x600' }}"
                     alt="">
+            </div>
+            <div class="flex w-full justify-between">
+                <flux:badge icon="hand-thumb-up" variant="pill" color="blue" as="button">0</flux:badge>
+                <flux:badge icon="hand-thumb-down" variant="pill" color="red" as="button">0</flux:badge>
             </div>
         </div>
         <div class="flex flex-col gap-3">

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use App\Models\Book;
 use App\Models\Loan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class LoanController extends Controller
@@ -28,7 +30,22 @@ class LoanController extends Controller
      */
     public function create()
     {
-        //
+        $books = Book::all();
+        $users = User::all();
+        $admins = Admin::all();
+        $statuses = [
+            'borrowed',
+            'overdue',
+            'returning',
+            'returned',
+        ];
+
+        return view('admin.loans.create', [
+            'books' => $books,
+            'users' => $users,
+            'admins' => $admins,
+            'statuses' => $statuses,
+        ]);
     }
 
     /**
@@ -36,7 +53,17 @@ class LoanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Loan::query()->create([
+            'book_id' => $request['book_id'],
+            'user_id' => $request['user_id'],
+            'admin_id' => $request['admin_id'],
+            'borrow_date' => $request['borrow_date'],
+            'due_date' => $request['due_date'],
+            'return_date' => $request['return_date'],
+            'status' => $request['status'],
+        ]);
+
+        return redirect()->route('admin.loans.index');
     }
 
     /**

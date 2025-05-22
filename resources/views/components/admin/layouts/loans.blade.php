@@ -33,6 +33,7 @@
                     </flux:menu.submenu>
                 </flux:menu>
             </flux:dropdown>
+            <flux:button variant="primary" icon="plus" as="a" href="/admin/loans/create">Loan</flux:button>
         </div>
     </div>
     <div class="my-5">

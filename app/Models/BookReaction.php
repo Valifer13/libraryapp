@@ -9,4 +9,8 @@ class BookReaction extends Model
 {
     /** @use HasFactory<\Database\Factories\BookReactionFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        ''
+    ];
 }
