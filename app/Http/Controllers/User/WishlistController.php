@@ -26,4 +26,12 @@ class WishlistController extends Controller
 
         return redirect()->route('books.detail', [$book->slug]);
     }
+
+    public function destroy(String $wishlist_id)
+    {
+        $wishlist = Wishlist::find($wishlist_id);
+        $wishlist->delete();
+
+        return redirect()->route('wishlists');
+    }
 }

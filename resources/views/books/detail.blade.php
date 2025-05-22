@@ -78,12 +78,22 @@
                 </h2>
             </div>
             <p class="max-h-[150px] max-w-[650px] overflow-y-auto pe-5 text-justify text-zinc-700 dark:text-zinc-400">
-                {{ $book->description }}</p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum ratione quo magnam dolore veritatis,
+                distinctio aspernatur voluptate nostrum, exercitationem corrupti praesentium. Adipisci eum, beatae atque
+                voluptatibus placeat, reiciendis ea quam recusandae libero praesentium quasi, sit debitis odio corrupti
+                enim cupiditate veniam explicabo repellendus fuga quae repudiandae fugit unde saepe qui! Quidem quod
+                impedit excepturi accusantium libero aliquam quae quaerat doloribus ullam corrupti, in, nam
+                perspiciatis, aperiam soluta deserunt dicta error aliquid repudiandae quibusdam voluptas deleniti alias
+                voluptates sint. Ratione mollitia iste placeat commodi qui, atque, dolorum repellat temporibus, ut
+                nostrum officiis! Commodi nisi laudantium rem accusantium in facere? Nam, voluptatibus.
+            </p>
             <div class="flex gap-5 mt-2 items-center">
                 @if ($book->stock == 0)
-                    <flux:button variant="filled" icon="shopping-cart" class="line-through!">Book stock is empty</flux:button>
+                    <flux:button variant="filled" icon="shopping-cart" class="line-through!">Book stock is empty
+                    </flux:button>
                 @elseif ($alreadyBorrowed)
-                    <flux:button variant="filled" icon="shopping-cart" class="line-through!">Already Borrowed</flux:button>
+                    <flux:button variant="filled" icon="shopping-cart" class="line-through!">Already Borrowed
+                    </flux:button>
                 @elseif ($totalLoans >= 3)
                     <flux:button variant="filled" icon="shopping-cart" class="line-through!">Limit Order</flux:button>
                 @else

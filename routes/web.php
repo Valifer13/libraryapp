@@ -3,6 +3,7 @@
 use App\Http\Controllers\User\BookController;
 use App\Http\Controllers\User\LoanController;
 use App\Http\Controllers\User\WishlistController;
+use App\Livewire\BookSearch;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -15,11 +16,12 @@ Route::view('dashboard', 'dashboard')
     ->name('dashboard');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('books', [BookController::class, 'index'])->name('books');
+    Route::get('books', BookSearch::class)->name('books');
     Route::get('books/{slug}', [BookController::class, 'show'])->name('books.detail');
     Route::post('books/{book_id}', [LoanController::class, 'borrowing']);
     Route::get('wishlists', [WishlistController::class, 'index'])->name('wishlists');
     Route::post('wishlists/{book_id}', [WishlistController::class, 'store']);
+    Route::delete('wishlists/{book_id}', [WishlistController::class, 'destroy']);
     Route::get('loans', [LoanController::class, 'index'])->name('loans');
     Route::post('loans/{id}', [LoanController::class, 'returning']);
     Route::get('history', [LoanController::class, 'history'])->name('history');

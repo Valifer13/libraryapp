@@ -9,6 +9,7 @@
                         <th class="px-3 py-2 whitespace-nowrap">Cover</th>
                         <th class="px-3 py-2 whitespace-nowrap">Title</th>
                         <th class="px-3 py-2 whitespace-nowrap">Time</th>
+                        <th class="px-3 py-2 whitespace-nowrap">Action</th>
                     </tr>
                 </thead>
 
@@ -26,6 +27,13 @@
                                 <h2 class="text-sm text-zinc-400">{{ $wishlist->book->author }}</h2>
                             </td>
                             <td class="px-3 py-2 whitespace-nowrap">{{ $wishlist->created_at->diffForHumans() }}</td>
+                            <td class="px-3 py-2 whitespace-nowrap">
+                                <form action="/wishlists/{{ $wishlist->id }}" method="post">
+                                    @csrf
+                                    @method("DELETE")
+                                    <flux:button type="submit" class="bg-red-500! hover:bg-red-400!">Delete</flux:button>
+                                </form>
+                            </td>
                         </tr>
                     @empty
                         <tr class="*:text-zinc-900 *:first:font-medium dark:*:text-white">
