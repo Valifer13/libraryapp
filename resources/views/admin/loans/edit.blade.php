@@ -8,8 +8,10 @@
             <select name="book_id" id="select-book" placeholder="Choose book..." autocomplete="off">
                 <option value="">Choose book...</option>
                 @foreach (App\Models\Book::all() as $book)
-                    <option value="{{ $book->id }}" {{ $book->id == $loan->book->id ? 'selected' : '' }}>{{ $book->title }}
-                    </option>
+                    @if($loan->book != null)
+                        <option value="{{ $book->id ?? '' }}" {{ $loan->book->id !== null ? 'selected' : '' }}>{{ $book->title }}
+                        </option>
+                    @endif
                 @endforeach
             </select>
         </div>
@@ -28,8 +30,10 @@
             <select name="admin_id" id="select-admin" placeholder="Choose admin..." autocomplete="off">
                 <option value="">Choose admin...</option>
                 @foreach (App\Models\Admin::all() as $admin)
-                    <option value="{{ $admin->id }}" {{ $admin->id == $loan->admin->id ? 'selected' : '' }}>{{ $admin->name }}
-                    </option>
+                    @if($loan->admin != null)
+                        <option value="{{ $admin->id }}" {{ $admin->id == $loan->admin->id ? 'selected' : '' }}>{{ $admin->name }}
+                        </option>
+                    @endif
                 @endforeach
             </select>
         </div>

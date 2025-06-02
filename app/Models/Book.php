@@ -24,6 +24,27 @@ class Book extends Model
         'category_id',
     ];
 
+    public function addWishlistBy(User $user) {
+        Wishlist::query()->create([
+            'user_id' => $user->id,
+            'book_id' => $this->id
+        ]);
+    }
+
+    public function BorrowedBy(User $user)
+    {
+        Loan::query()->create([
+            'book_id' => $this->id,
+            'user_id' => $user->id,
+            'admin_id' => Admin::first()->id,
+            'borrow_date' => now(),
+            'due_date' => now()->addDays(7),
+        ]);
+
+        $this->stock -= 1;
+        $this->save();
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);

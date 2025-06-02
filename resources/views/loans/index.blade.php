@@ -18,7 +18,7 @@
                     @forelse ($loans as $loan)
                         <tr class="*:text-gray-900 *:first:font-medium dark:*:text-white">
                             <td class="px-3 py-2 whitespace-nowrap">
-                                <a href="/books/{{ $loan->book->slug }}" class="cursor-pointer hover:underline">{{ $loan->book->title }}</a>
+                                <a href="/books/{{ $loan->book->slug ?? 'unkown' }}" class="cursor-pointer hover:underline">{{ $loan->book->title }}</a>
                             </td>
                             <td class="px-3 py-2 whitespace-nowrap">{{ $loan->borrow_date }}</td>
                             <td class="px-3 py-2 whitespace-nowrap">{{ $loan->due_date }}</td>

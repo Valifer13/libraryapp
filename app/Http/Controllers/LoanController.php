@@ -79,16 +79,7 @@ class LoanController extends Controller
      */
     public function edit(string $id)
     {
-        $loan = Loan::find($id);
 
-        $statuses = [
-            'borrowed',
-            'overdue',
-            'returning',
-            'returned',
-        ];
-
-        return view('admin.loans.edit', compact('loan', 'statuses'));
     }
 
     /**

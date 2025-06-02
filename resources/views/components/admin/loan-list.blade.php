@@ -93,13 +93,7 @@
                 <flux:button icon="ellipsis-horizontal"></flux:button>
 
                 <flux:menu>
-                    <flux:menu.item icon="pencil" href="/admin/loans/{{ $loan->id }}/edit">Edit</flux:menu.item>
                     <flux:menu.item icon="magnifying-glass" href="/admin/loans/{{ $loan->id }}">Detail</flux:menu.item>
-                    <form action="/admin/loans/{{ $loan->id }}" method="post">
-                        @csrf
-                        @method('delete')
-                        <flux:menu.item icon="trash" variant="danger" type="submit">Delete</flux:menu.item>
-                    </form>
                 </flux:menu>
             </flux:dropdown>
         </td>
